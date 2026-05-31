@@ -3,6 +3,7 @@ import {
   CasesSection,
   FinalCta,
   Hero,
+  HomeAurora,
   IndustriesSection,
   ProblemSection,
   ServicesSection,
@@ -57,6 +58,7 @@ export default async function HomePage({ params }: LocalePageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
       />
+      <HomeAurora />
       <Hero lang={lang} tr={tr} />
       <TrustMarquee lang={lang} tr={tr} />
       <ProblemSection lang={lang} tr={tr} />

@@ -158,7 +158,7 @@ export function TrustMarquee({ tr }: SectionProps) {
   );
 }
 
-function InteractiveBg() {
+export function HomeAurora() {
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -181,7 +181,6 @@ const PROBLEM_ACCENTS = ["neon-magenta", "neon-cyan", "neon-lime", "neon-violet"
 export function ProblemSection({ tr }: SectionProps) {
   return (
     <section className="relative py-24 md:py-32">
-      <InteractiveBg />
       <div className="relative mx-auto max-w-7xl px-6 md:px-10">
         <div className="max-w-2xl">
           <h2 className="text-3xl md:text-5xl font-semibold text-gradient">{tr.problem.title}</h2>
