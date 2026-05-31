@@ -305,8 +305,8 @@ export function CasesSection({ lang, tr }: SectionProps) {
           <p className="mt-4 text-[color:var(--ink-4)] text-lg">{tr.cases.sub}</p>
         </div>
 
-        <div className="mt-12 -mx-6 md:-mx-10 px-6 md:px-10 overflow-x-auto snap-x snap-mandatory scrollbar-none">
-          <div className="flex gap-6 pb-6 group/list">
+        <div className="mt-12 -mx-6 md:-mx-10 px-14 md:px-20 overflow-x-auto snap-x snap-mandatory scroll-px-14 md:scroll-px-20 scrollbar-none">
+          <div className="flex gap-6 pt-16 pb-28 md:pt-16 md:pb-28 group/list">
             {tr.cases.items.map((item, i) => {
               const Icon = CASE_ICONS[i];
               return (
