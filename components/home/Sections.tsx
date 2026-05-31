@@ -176,7 +176,7 @@ export function HomeAurora() {
   return <div ref={ref} className="aurora" />;
 }
 
-const PROBLEM_ACCENTS = ["neon-magenta", "neon-cyan", "neon-lime", "neon-violet"] as const;
+const PROBLEM_ACCENTS = ["#FF4FD8", "#00E5FF", "#B6FF3B", "#8B5CF6"] as const;
 
 export function ProblemSection({ tr }: SectionProps) {
   return (
@@ -192,21 +192,28 @@ export function ProblemSection({ tr }: SectionProps) {
             return (
               <div
                 key={i}
-                className="group relative glass rounded-3xl p-6 transition duration-500 hover:shadow-[0_30px_80px_-20px_var(--tw-shadow-color)] hover:-translate-y-1"
-                style={{ "--tw-shadow-color": `var(--${accent})` } as CSSProperties}
+                className="group relative glass overflow-hidden rounded-3xl p-6 transition duration-500 hover:shadow-[0_30px_80px_-20px_var(--tw-shadow-color)] hover:-translate-y-1"
+                style={{ "--problem-accent": accent, "--tw-shadow-color": accent } as CSSProperties}
               >
                 <div
-                  className="absolute inset-x-6 top-0 h-[2px] rounded-full opacity-0 group-hover:opacity-100 transition"
+                  className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition duration-500 group-hover:opacity-100"
                   style={{
-                    background: `linear-gradient(90deg, transparent, var(--${accent}), transparent)`,
-                    boxShadow: `0 0 24px var(--${accent})`,
+                    background:
+                      "radial-gradient(120% 90% at 50% 0%, color-mix(in oklab, var(--problem-accent) 18%, transparent), transparent 58%)",
                   }}
                 />
                 <div
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-xl"
+                  className="absolute inset-x-6 top-0 z-10 h-[2px] rounded-full opacity-0 transition group-hover:opacity-100"
                   style={{
-                    background: `color-mix(in oklab, var(--${accent}) 18%, transparent)`,
-                    color: `var(--${accent})`,
+                    background: "linear-gradient(90deg, transparent, var(--problem-accent), transparent)",
+                    boxShadow: "0 0 24px var(--problem-accent)",
+                  }}
+                />
+                <div
+                  className="relative z-10 inline-flex h-10 w-10 items-center justify-center rounded-xl"
+                  style={{
+                    background: "color-mix(in oklab, var(--problem-accent) 18%, transparent)",
+                    color: "var(--problem-accent)",
                   }}
                 >
                   {
@@ -218,8 +225,8 @@ export function ProblemSection({ tr }: SectionProps) {
                     ][i]
                   }
                 </div>
-                <h3 className="mt-5 text-lg font-semibold text-[color:var(--ink-5)]">{card.t}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-[color:var(--ink-4)]">{card.d}</p>
+                <h3 className="relative z-10 mt-5 text-lg font-semibold text-[color:var(--ink-5)]">{card.t}</h3>
+                <p className="relative z-10 mt-2 text-sm leading-relaxed text-[color:var(--ink-4)]">{card.d}</p>
               </div>
             );
           })}

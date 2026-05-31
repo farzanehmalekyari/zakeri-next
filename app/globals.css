@@ -383,11 +383,15 @@ html[dir="rtl"] .marquee-track { animation: marquee-rtl 40s linear infinite; }
 
 /* Interactive pattern background */
 .aurora {
-  position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+  position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none;
   background:
     radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%), color-mix(in oklab, var(--glow) 18%, transparent), transparent 60%),
     radial-gradient(800px circle at calc(100% - var(--mx, 50%)) calc(100% - var(--my, 50%)), color-mix(in oklab, var(--neon-violet) 12%, transparent), transparent 60%);
   transition: background-position .3s ease;
+}
+
+.aurora ~ section {
+  z-index: 1;
 }
 
 .dot-grid {
