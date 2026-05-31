@@ -206,6 +206,10 @@
   .hero-glass {
     position: relative;
     isolation: isolate;
+    transform-style: preserve-3d;
+    transform-origin: 58% 48%;
+    backface-visibility: hidden;
+    will-change: transform;
     background:
       radial-gradient(120% 80% at 0% 0%, rgba(125,160,202,0.18), transparent 55%),
       radial-gradient(80% 60% at 100% 100%, rgba(84,131,179,0.16), transparent 60%),
@@ -217,16 +221,26 @@
       inset 0 1px 0 rgba(255,255,255,0.18),
       inset 0 0 0 1px rgba(125,200,255,0.06),
       inset 0 -40px 80px -40px rgba(0,30,80,0.6),
+      -18px 16px 0 -13px rgba(94,150,255,0.10),
+      -28px 26px 0 -20px rgba(82,180,255,0.08),
       0 30px 80px -30px rgba(0,0,0,0.75),
       0 0 0 1px color-mix(in oklab, var(--glow) 35%, transparent),
       0 0 60px -10px color-mix(in oklab, var(--glow) 55%, transparent),
       0 0 140px -30px color-mix(in oklab, var(--glow-strong) 70%, transparent);
-    transform: perspective(1600px) rotateY(-2.5deg) rotateX(1.2deg);
+    transform: perspective(1400px) rotateY(-7deg) rotateX(3.2deg) rotateZ(-0.7deg);
     transition: transform .6s ease;
   }
-  .hero-glass:hover { transform: perspective(1600px) rotateY(-1.2deg) rotateX(0.6deg); }
-  html[dir="rtl"] .hero-glass { transform: perspective(1600px) rotateY(2.5deg) rotateX(1.2deg); }
-  html[dir="rtl"] .hero-glass:hover { transform: perspective(1600px) rotateY(1.2deg) rotateX(0.6deg); }
+  .hero-glass:hover {
+    animation: none;
+    transform: perspective(1400px) rotateY(-5deg) rotateX(2.4deg) rotateZ(-0.35deg) translate3d(2px, -6px, 18px);
+  }
+  html[dir="rtl"] .hero-glass {
+    transform-origin: 42% 48%;
+    transform: perspective(1400px) rotateY(7deg) rotateX(3.2deg) rotateZ(0.7deg);
+  }
+  html[dir="rtl"] .hero-glass:hover {
+    transform: perspective(1400px) rotateY(5deg) rotateX(2.4deg) rotateZ(0.35deg) translate3d(-2px, -6px, 18px);
+  }
 
   /* Top glossy highlight */
   .hero-glass::before {
@@ -257,6 +271,7 @@
   }
   @media (max-width: 768px) {
     .hero-glass {
+      animation: none;
       transform: none !important;
       box-shadow:
         inset 0 1px 0 rgba(255,255,255,0.14),
@@ -365,10 +380,15 @@
 @property --ang { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
 
 @keyframes float-card {
-  0%, 100% { transform: translateY(0) translateX(0) scale(1); }
-  50% { transform: translateY(-10px) translateX(4px) scale(1.005); }
+  0%, 100% { transform: perspective(1400px) rotateY(-7deg) rotateX(3.2deg) rotateZ(-0.7deg) translate3d(0, 0, 0) scale(1); }
+  50% { transform: perspective(1400px) rotateY(-6deg) rotateX(2.7deg) rotateZ(-0.45deg) translate3d(4px, -10px, 18px) scale(1.006); }
+}
+@keyframes float-card-rtl {
+  0%, 100% { transform: perspective(1400px) rotateY(7deg) rotateX(3.2deg) rotateZ(0.7deg) translate3d(0, 0, 0) scale(1); }
+  50% { transform: perspective(1400px) rotateY(6deg) rotateX(2.7deg) rotateZ(0.45deg) translate3d(-4px, -10px, 18px) scale(1.006); }
 }
 .animate-float { animation: float-card 10s ease-in-out infinite; }
+html[dir="rtl"] .animate-float { animation-name: float-card-rtl; }
 
 @keyframes marquee-ltr { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes marquee-rtl { from { transform: translateX(-50%); } to { transform: translateX(0); } }
