@@ -341,7 +341,9 @@ export function CasesSection({ lang, tr }: SectionProps) {
                     {tr.cta.learn} <ArrowUpRight className="h-3.5 w-3.5" />
                   </Link>
 
-                  <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 -bottom-6 w-[88%] glass-strong rounded-2xl p-4 opacity-0 translate-y-3 transition duration-500 group-hover:opacity-100 group-hover:translate-y-0">
+                  <div className="pointer-events-none absolute inset-0 z-10 rounded-3xl bg-[color:var(--ink-1)]/45 opacity-0 transition duration-500 group-hover:opacity-100" />
+
+                  <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 -bottom-6 z-20 w-[88%] rounded-2xl border border-white/15 bg-[color:var(--ink-2)] p-4 opacity-0 shadow-[0_24px_80px_-24px_rgba(0,0,0,0.9)] translate-y-3 transition duration-500 group-hover:opacity-100 group-hover:translate-y-0">
                     <Quote className="h-4 w-4 text-[color:var(--glow)]" />
                     <p className="mt-2 text-xs text-[color:var(--ink-4)] leading-relaxed">
                       &quot;{tr.cases.quote}&quot;
