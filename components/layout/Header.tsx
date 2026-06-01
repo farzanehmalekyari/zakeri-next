@@ -73,9 +73,14 @@ export function Header({ lang, tr }: { lang: Lang; tr: Dict }) {
 
           <div className="hidden lg:flex items-center gap-3">
             <LanguageSwitcher lang={lang} />
-            <Link href={withLocalePath(lang, "/contact")} className="btn-primary text-sm">
-              {tr.cta.build}
-            </Link>
+            <a
+              href={publicSiteConfig.whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center rounded-full border border-[color:var(--glow)]/35 bg-[color:var(--glow)]/15 px-3 py-1.5 text-sm font-medium text-[color:var(--ink-5)] transition hover:bg-[color:var(--glow)]/25 hover:text-white"
+            >
+              WhatsApp
+            </a>
           </div>
 
           <button
@@ -140,13 +145,15 @@ export function Header({ lang, tr }: { lang: Lang; tr: Dict }) {
           </nav>
           <div className="mt-auto flex flex-col gap-3">
             <LanguageSwitcher lang={lang} />
-            <Link
-              href={withLocalePath(lang, "/contact")}
+            <a
+              href={publicSiteConfig.whatsappUrl}
               onClick={() => setOpen(false)}
-              className="btn-primary justify-center"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex justify-center rounded-2xl border border-[color:var(--glow)]/35 bg-[color:var(--glow)]/15 px-4 py-3 text-base font-medium text-[color:var(--ink-5)] transition hover:bg-[color:var(--glow)]/25"
             >
-              {tr.cta.build}
-            </Link>
+              WhatsApp
+            </a>
           </div>
         </div>
       </div>
