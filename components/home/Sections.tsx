@@ -55,7 +55,7 @@ export function Hero({ lang, tr }: SectionProps) {
       <div className="dot-grid absolute inset-0 opacity-50" />
 
       <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-center px-6 pt-36 pb-16 md:items-start md:px-10 md:pt-44 lg:min-h-screen">
-        <div className="hero-glass animate-float relative w-full max-w-2xl lg:max-w-3xl rounded-[3rem] md:rounded-[3.5rem] p-8 md:p-12 lg:p-14">
+        <div className="hero-glass animate-float relative w-full max-w-2xl lg:max-w-[42rem] rounded-[3rem] md:rounded-[3.5rem] p-8 md:p-11 lg:p-12">
           <span
             className="hero-corner -top-6 -left-6"
             style={{
