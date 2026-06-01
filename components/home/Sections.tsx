@@ -49,9 +49,9 @@ export function Hero({ lang, tr }: SectionProps) {
         fill
         priority
         sizes="100vw"
-        className="absolute inset-0 object-cover opacity-90"
+        className="absolute inset-0 object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[color:var(--ink-1)]/70 via-[color:var(--ink-1)]/50 to-[color:var(--ink-1)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[color:var(--ink-1)]/10 via-[color:var(--ink-1)]/5 to-[color:var(--ink-1)]/10" />
       <div className="dot-grid absolute inset-0 opacity-50" />
 
       <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-center px-6 pt-36 pb-16 md:items-start md:px-10 md:pt-44 lg:min-h-screen">
