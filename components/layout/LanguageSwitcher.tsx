@@ -67,7 +67,7 @@ export function LanguageSwitcher({ lang }: { lang: Lang }) {
             role="menuitem"
             aria-current={lang === item.code ? "true" : undefined}
             onClick={() => setOpen(false)}
-            className={`block whitespace-nowrap rounded-xl px-3 py-2 text-center text-sm transition ${
+            className={`block whitespace-nowrap rounded-xl px-3 py-2 text-sm transition ${
               lang === item.code
                 ? "bg-[color:var(--ink-5)]/15 text-[color:var(--ink-5)]"
                 : "text-[color:var(--ink-4)] hover:bg-white/5 hover:text-[color:var(--ink-5)]"
