@@ -221,25 +221,11 @@
     -webkit-backdrop-filter: blur(18px) saturate(94%) brightness(68%) contrast(114%);
     border: 1px solid rgba(210,239,255,0.50);
     box-shadow:
-      inset 0 2px 0 rgba(255,255,255,0.42),
-      inset 2px 0 0 rgba(130,215,255,0.34),
-      inset -1px 0 0 rgba(255,255,255,0.16),
-      inset 0 -3px 0 rgba(0,191,255,0.38),
-      inset 0 0 0 1px rgba(165,220,255,0.20),
-      inset 18px 0 42px -34px rgba(255,255,255,0.66),
-      inset -34px 0 64px -50px rgba(0,191,255,0.58),
-      inset 0 -56px 100px -70px rgba(0,42,110,0.72),
-      -18px 16px 0 -13px rgba(180,220,255,0.18),
-      -34px 30px 0 -22px rgba(82,180,255,0.12),
-      0 38px 95px -34px rgba(0,0,0,0.82),
-      0 -10px 34px -16px color-mix(in oklab, var(--glow-strong) 100%, transparent),
-      -18px 0 42px -16px color-mix(in oklab, var(--glow-strong) 92%, transparent),
-      0 18px 52px -20px color-mix(in oklab, var(--glow) 86%, transparent),
-      0 0 0 1px color-mix(in oklab, var(--glow) 66%, transparent),
-      0 0 82px -6px color-mix(in oklab, var(--glow) 74%, transparent),
-      0 0 190px -30px color-mix(in oklab, var(--glow-strong) 86%, transparent);
+      inset 0 2px 0 rgba(255,255,255,0.36),
+      inset 0 -2px 0 rgba(0,191,255,0.24),
+      inset 0 0 0 1px rgba(165,220,255,0.16);
     transform: perspective(1050px) rotateY(12deg) rotateX(3.8deg) rotateZ(1.05deg);
-    transition: transform .6s ease;
+    transition: transform .6s ease, box-shadow .45s ease, border-color .45s ease;
   }
   .hero-glass h1,
   .hero-glass p {
@@ -247,6 +233,12 @@
   }
   .hero-glass:hover {
     animation: none;
+    border-color: rgba(220,245,255,0.66);
+    box-shadow:
+      inset 0 2px 0 rgba(255,255,255,0.38),
+      inset 0 -2px 0 rgba(0,191,255,0.26),
+      inset 0 0 0 1px rgba(165,220,255,0.18),
+      0 28px 90px -30px rgba(0,191,255,0.72);
     transform: perspective(1050px) rotateY(9.5deg) rotateX(2.8deg) rotateZ(0.7deg) translate3d(-3px, -6px, 24px);
   }
   html[dir="rtl"] .hero-glass {
@@ -275,29 +267,22 @@
     content: "";
     position: absolute; inset: 0;
     border-radius: inherit;
-    padding: 2.5px;
+    padding: 2px;
     background:
-      linear-gradient(180deg,
-        color-mix(in oklab, var(--ink-5) 78%, var(--glow-strong) 22%) 0%,
-        color-mix(in oklab, var(--glow-strong) 72%, transparent) 14%,
-        transparent 38%),
-      linear-gradient(90deg,
-        color-mix(in oklab, var(--glow-strong) 88%, white 12%) 0%,
-        color-mix(in oklab, var(--glow) 52%, transparent) 13%,
-        transparent 34%,
-        transparent 74%,
-        color-mix(in oklab, var(--glow-strong) 44%, transparent) 100%),
-      linear-gradient(0deg,
-        color-mix(in oklab, var(--glow) 86%, white 14%) 0%,
-        color-mix(in oklab, var(--glow) 46%, transparent) 18%,
-        transparent 42%),
-      linear-gradient(140deg,
-        color-mix(in oklab, var(--ink-5) 70%, var(--glow-strong) 30%) 0%,
-        transparent 30%,
-        transparent 70%,
-        color-mix(in oklab, var(--glow) 78%, transparent) 100%);
+      conic-gradient(from var(--ang, 0deg),
+        rgba(0,191,255,0.18) 0deg,
+        rgba(0,191,255,0.08) 72deg,
+        rgba(255,255,255,0.92) 118deg,
+        rgba(77,166,255,0.88) 140deg,
+        rgba(0,191,255,0.10) 178deg,
+        transparent 242deg,
+        rgba(77,166,255,0.30) 312deg,
+        rgba(0,191,255,0.18) 360deg);
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor; mask-composite: exclude;
+    animation: spin-border 18s linear infinite;
+    filter: drop-shadow(0 0 12px rgba(0,191,255,0.48));
+    opacity: .9;
     pointer-events: none;
   }
   @media (max-width: 768px) {
@@ -306,10 +291,8 @@
       transform: none !important;
       box-shadow:
         inset 0 1px 0 rgba(255,255,255,0.22),
-        inset 0 0 0 1px rgba(125,200,255,0.18),
-        0 20px 60px -20px rgba(0,0,0,0.7),
-        0 0 0 1px color-mix(in oklab, var(--glow) 48%, transparent),
-        0 0 48px -8px color-mix(in oklab, var(--glow) 52%, transparent);
+        inset 0 -1px 0 rgba(0,191,255,0.20),
+        inset 0 0 0 1px rgba(125,200,255,0.18);
     }
   }
 
@@ -320,7 +303,7 @@
     border-radius: inherit;
     pointer-events: none;
     filter: blur(14px);
-    opacity: .9;
+    opacity: 0;
   }
 
   /* Premium glowing pill badge */

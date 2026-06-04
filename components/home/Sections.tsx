@@ -306,29 +306,38 @@ export function CasesSection({ lang, tr }: SectionProps) {
         </div>
 
         <div className="mt-12 -mx-6 md:-mx-10 px-14 md:px-20 overflow-x-auto snap-x snap-mandatory scroll-px-14 md:scroll-px-20 scrollbar-none">
-          <div className="flex gap-6 pt-16 pb-28 md:pt-16 md:pb-28 group/list">
+          <div className="flex items-start gap-10 pt-20 pb-40 md:gap-12 md:pt-20 md:pb-40 group/list">
             {tr.cases.items.map((item, i) => {
               const Icon = CASE_ICONS[i];
+              const cardClassName = [
+                "group group/card relative isolate flex snap-start shrink-0 flex-col glass rounded-[2rem] p-5 transition-all duration-500 will-change-transform",
+                "w-[86%] sm:w-[62%] lg:w-[22rem]",
+                "lg:group-hover/list:opacity-35 lg:group-hover/list:brightness-50",
+                "hover:z-20 hover:-translate-y-4 hover:!scale-[1.045] hover:!opacity-100 hover:!brightness-100 hover:shadow-[0_24px_70px_-34px_var(--glow)] hover:ring-1 hover:ring-[color:var(--glow)]",
+              ].join(" ");
+              const imageClassName = [
+                "relative overflow-hidden rounded-[1.4rem] border border-white/10 bg-[color:var(--ink-1)] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition-all duration-500",
+                "h-56 sm:h-60 lg:h-64",
+              ].join(" ");
               return (
                 <article
                   key={i}
-                  className="group relative snap-start shrink-0 w-[85%] sm:w-[60%] lg:w-[28%] glass rounded-3xl p-4 transition duration-500 hover:scale-[1.02] hover:shadow-glow"
+                  className={cardClassName}
                 >
-                  <div className="rounded-2xl overflow-hidden border border-white/10 bg-[color:var(--ink-1)]">
-                    <div className="flex items-center gap-1.5 px-3 py-2 border-b border-white/10 bg-white/5">
-                      <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
-                      <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/70" />
-                      <span className="h-2.5 w-2.5 rounded-full bg-green-400/70" />
-                    </div>
-                    <div className="relative h-44">
-                      <Image
-                        src={CASE_IMAGES[i]}
-                        alt={item.industry}
-                        fill
-                        sizes="(min-width: 1024px) 28vw, (min-width: 640px) 60vw, 85vw"
-                        className="object-cover"
-                      />
-                    </div>
+                  <div className={imageClassName}>
+                    <Image
+                      src={CASE_IMAGES[i]}
+                      alt={item.industry}
+                      fill
+                      sizes="(min-width: 1024px) 28vw, (min-width: 640px) 60vw, 85vw"
+                      className="object-cover"
+                    />
+                    <div
+                      className={[
+                        "absolute inset-0 bg-gradient-to-t from-[color:var(--ink-1)]/50 via-transparent to-transparent transition duration-500 group-hover/card:opacity-10",
+                        "opacity-50",
+                      ].join(" ")}
+                    />
                   </div>
                   <div className="mt-4 flex items-center gap-2 text-[11px] uppercase tracking-widest text-[color:var(--ink-4)]">
                     <Icon className="h-3.5 w-3.5" /> {item.industry}
@@ -336,12 +345,12 @@ export function CasesSection({ lang, tr }: SectionProps) {
                   <h3 className="mt-2 text-[color:var(--ink-5)] font-semibold">{item.goal}</h3>
                   <Link
                     href={withLocalePath(lang, "/portfolio")}
-                    className="mt-4 inline-flex items-center gap-1 text-sm text-[color:var(--glow)] hover:text-[color:var(--glow-strong)]"
+                    className="mt-5 inline-flex items-center gap-1 text-sm text-[color:var(--glow)] hover:text-[color:var(--glow-strong)]"
                   >
                     {tr.cta.learn} <ArrowUpRight className="h-3.5 w-3.5" />
                   </Link>
 
-                  <div className="pointer-events-none absolute inset-0 z-10 rounded-3xl bg-[color:var(--ink-1)]/45 opacity-0 transition duration-500 group-hover:opacity-100" />
+                  <div className="pointer-events-none absolute inset-0 z-10 rounded-[inherit] bg-[color:var(--ink-1)]/60 opacity-0 transition duration-500 lg:group-hover/list:opacity-100 group-hover/card:!opacity-0" />
 
                   <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 -bottom-6 z-20 w-[88%] rounded-2xl border border-white/15 bg-[color:var(--ink-2)] p-4 opacity-0 shadow-[0_24px_80px_-24px_rgba(0,0,0,0.9)] translate-y-3 transition duration-500 group-hover:opacity-100 group-hover:translate-y-0">
                     <Quote className="h-4 w-4 text-[color:var(--glow)]" />
