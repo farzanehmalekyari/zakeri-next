@@ -12,7 +12,14 @@ export type Dict = {
   brand: string; subname: string;
   nav: { home: string; services: string; portfolio: string; pricing: string; insights: string; about: string; contact: string; faq: string };
   cta: { build: string; cases: string; letsBuild: string; audit: string; whatsapp: string; more: string; learn: string };
-  hero: { badge: string; title: string; highlight: string; subtitle: string; mini: string[] };
+  hero: {
+    badge: string;
+    title: string;
+    highlight: string;
+    subtitle: string;
+    mini: string[];
+    miniDescriptions: string[];
+  };
   problem: { title: string; sub: string; cards: { t: string; d: string }[] };
   solution: { badge: string; title: string; sub: string; cards: { t: string; d: string }[]; strip: string };
   cases: { badge: string; title: string; sub: string; items: { industry: string; goal: string }[]; quote: string; who: { name: string; role: string } };
@@ -37,6 +44,11 @@ export const t: Record<Lang, Dict> = {
       highlight: "Growth Infrastructure",
       subtitle: "Websites, search systems, AI visibility, and conversion paths built to help businesses get found, trusted, and chosen online.",
       mini: ["SEO Optimization", "GEO Strategy", "Web Design"],
+      miniDescriptions: [
+        "Increase your visibility and drive qualified organic traffic.",
+        "Appear in AI searches and generative engines.",
+        "Modern, responsive websites that convert and inspire.",
+      ],
     },
     problem: {
       title: "Why Beautiful Websites Still Fail",
@@ -140,6 +152,11 @@ export const t: Record<Lang, Dict> = {
       highlight: "زیرساخت رشد",
       subtitle: "وب‌سایت‌ها، سیستم‌های جست‌وجو، دیده‌شدن در هوش مصنوعی و مسیرهای تبدیل، طراحی‌شده تا کسب‌وکار شما دیده، اعتماد و انتخاب شود.",
       mini: ["بهینه‌سازی سئو", "استراتژی GEO", "طراحی وب"],
+      miniDescriptions: [
+        "افزایش دیده‌شدن و جذب ترافیک ارگانیک باکیفیت.",
+        "حضور در جست‌وجوهای AI و موتورهای مولد.",
+        "وب‌سایت‌های مدرن و واکنش‌گرا که تبدیل می‌سازند.",
+      ],
     },
     problem: {
       title: "چرا وب‌سایت‌های زیبا هم شکست می‌خورند",
@@ -243,6 +260,11 @@ export const t: Record<Lang, Dict> = {
       highlight: "بنية النمو",
       subtitle: "مواقع وأنظمة بحث وظهور في الذكاء الاصطناعي ومسارات تحويل، لتُكتَشف وتُوثَّق وتُختار.",
       mini: ["تحسين السيو", "استراتيجية GEO", "تصميم الويب"],
+      miniDescriptions: [
+        "ارفع ظهورك واجذب زيارات عضوية مؤهلة.",
+        "اظهر في بحث الذكاء الاصطناعي والمحركات التوليدية.",
+        "مواقع حديثة ومتجاوبة تحوّل وتلهم.",
+      ],
     },
     problem: {
       title: "لماذا تفشل المواقع الجميلة؟",

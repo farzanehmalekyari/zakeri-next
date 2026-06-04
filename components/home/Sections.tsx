@@ -12,11 +12,11 @@ import {
   ChevronLeft,
   ChevronRight,
   Eye,
-  Globe2,
+  Globe,
   Home as HomeIcon,
-  Layout,
   MessageCircle,
   MonitorSmartphone,
+  PencilRuler,
   Quote,
   Search,
   ShieldCheck,
@@ -41,6 +41,11 @@ export function Hero({ lang, tr }: SectionProps) {
   const index = title.indexOf(highlight);
   const before = index >= 0 ? title.slice(0, index) : title;
   const after = index >= 0 ? title.slice(index + highlight.length) : "";
+  const featureCards = [
+    { icon: Search, label: tr.hero.mini[0], description: tr.hero.miniDescriptions[0] },
+    { icon: Globe, label: tr.hero.mini[1], description: tr.hero.miniDescriptions[1] },
+    { icon: PencilRuler, label: tr.hero.mini[2], description: tr.hero.miniDescriptions[2] },
+  ];
 
   return (
     <section className="relative min-h-screen w-full overflow-hidden">
@@ -126,16 +131,25 @@ export function Hero({ lang, tr }: SectionProps) {
           </div>
         </div>
 
-        <div className="mt-8 grid w-full max-w-3xl grid-cols-1 gap-3 md:grid-cols-3">
-          {[
-            { icon: Search, label: tr.hero.mini[0] },
-            { icon: Globe2, label: tr.hero.mini[1] },
-            { icon: Layout, label: tr.hero.mini[2] },
-          ].map((item, i) => (
-            <div key={i} className="glass rounded-2xl px-4 py-3 flex items-center gap-3">
-              <item.icon className="h-4 w-4 text-[color:var(--ink-5)]" />
-              <span className="text-sm text-[color:var(--ink-4)]">{item.label}</span>
-            </div>
+        <div className="hero-feature-grid mt-8 grid w-full max-w-[73rem] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {featureCards.map((item, i) => (
+            <article
+              key={item.label}
+              className="hero-feature-card group"
+              style={{ "--feature-delay": `${i * 0.28}s` } as CSSProperties}
+            >
+              <span className="hero-feature-icon" aria-hidden>
+                <item.icon className="h-7 w-7" strokeWidth={1.85} />
+              </span>
+              <div className="min-w-0 text-start">
+                <h2 className="text-xl font-semibold leading-tight text-[color:var(--ink-5)] md:text-2xl">
+                  {item.label}
+                </h2>
+                <p className="mt-3 max-w-[18rem] text-sm leading-relaxed text-[color:var(--ink-4)] md:text-base">
+                  {item.description}
+                </p>
+              </div>
+            </article>
           ))}
         </div>
       </div>
