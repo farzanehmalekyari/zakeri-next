@@ -6,25 +6,26 @@ import { useEffect, useRef, type CSSProperties } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
-  BarChart3,
-  BrainCircuit,
-  Briefcase,
+  BadgeCheck,
+  Bot,
+  Building2,
   ChevronLeft,
   ChevronRight,
-  Eye,
+  ChartNoAxesCombined,
+  ChartSpline,
+  CircleGauge,
   Globe,
-  Home as HomeIcon,
+  Handshake,
+  HeartPulse,
   MessageCircle,
   MonitorSmartphone,
   PencilRuler,
   Quote,
   Search,
-  ShieldCheck,
+  SearchCheck,
   Sparkles,
-  Stethoscope,
-  TrendingUp,
+  Waypoints,
   User,
-  Workflow,
 } from "lucide-react";
 import type { Dict, Lang } from "@/i18n/translations";
 import { withLocalePath } from "@/i18n/routing";
@@ -93,14 +94,14 @@ export function Hero({ lang, tr }: SectionProps) {
             </div>
           </div>
 
-          <h1 className="relative mt-7 text-4xl md:text-5xl lg:text-[3.75rem] font-semibold leading-[1.05] tracking-tight text-[color:var(--ink-5)]">
+          <h1 className="relative mt-7 text-4xl md:text-5xl lg:text-[3.75rem] font-semibold leading-[1.05] text-[color:var(--ink-5)]">
             {before}
             {index >= 0 && (
               <span
                 className="bg-clip-text text-transparent"
                 style={{
                   backgroundImage:
-                    "linear-gradient(110deg, oklch(0.92 0.14 220), oklch(0.78 0.20 240) 55%, oklch(0.70 0.22 280))",
+                    "linear-gradient(110deg, #F47EE8 0%, #B98CFF 44%, #62B8FF 100%)",
                 }}
               >
                 {highlight}
@@ -226,18 +227,17 @@ export function ProblemSection({ tr }: SectionProps) {
                   }}
                 />
                 <div
-                  className="relative z-10 inline-flex h-10 w-10 items-center justify-center rounded-xl"
+                  className="neon-icon-box relative z-10 inline-flex h-10 w-10 items-center justify-center rounded-xl"
                   style={{
-                    background: "color-mix(in oklab, var(--problem-accent) 18%, transparent)",
                     color: "var(--problem-accent)",
                   }}
                 >
                   {
                     [
-                      <Search key="search" className="h-5 w-5" />,
-                      <ShieldCheck key="shield" className="h-5 w-5" />,
-                      <Workflow key="workflow" className="h-5 w-5" />,
-                      <Eye key="eye" className="h-5 w-5" />,
+                      <SearchCheck key="search" className="h-5 w-5" />,
+                      <BadgeCheck key="badge" className="h-5 w-5" />,
+                      <Waypoints key="waypoints" className="h-5 w-5" />,
+                      <CircleGauge key="gauge" className="h-5 w-5" />,
                     ][i]
                   }
                 </div>
@@ -252,7 +252,7 @@ export function ProblemSection({ tr }: SectionProps) {
   );
 }
 
-const SOLUTION_ICONS = [TrendingUp, Search, BrainCircuit, ShieldCheck, Workflow, BarChart3];
+const SOLUTION_ICONS = [ChartSpline, SearchCheck, Bot, BadgeCheck, Waypoints, ChartNoAxesCombined];
 const SOLUTION_IMAGES = [
   "/images/Conversion.png",
   "/images/SEO-ready.png",
@@ -282,7 +282,7 @@ export function SolutionSection({ lang, tr }: SectionProps) {
                 className="group glass luminous-border rounded-3xl p-6 hover-lift overflow-hidden animate-fade-up"
                 style={{ animationDelay: `${i * 60}ms` }}
               >
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[color:var(--glow)]/15 text-[color:var(--ink-5)]">
+                <div className="neon-icon-box inline-flex h-11 w-11 items-center justify-center rounded-2xl">
                   <Icon className="h-5 w-5" />
                 </div>
                 <h3 className="mt-5 text-lg font-semibold text-[color:var(--ink-5)]">{card.t}</h3>
@@ -321,7 +321,7 @@ const CASE_IMAGES = [
   "/images/case-personal.jpg",
   "/images/case-consulting.jpg",
 ];
-const CASE_ICONS = [HomeIcon, Stethoscope, User, Briefcase];
+const CASE_ICONS = [Building2, HeartPulse, User, Handshake];
 
 export function CasesSection({ lang, tr }: SectionProps) {
   const casesCarouselRef = useRef<HTMLDivElement | null>(null);
@@ -457,7 +457,7 @@ const SERVICE_IMAGES = [
   "/images/svc-web.jpg",
   "/images/svc-visibility.jpg",
 ];
-const SERVICE_ICONS = [Search, BrainCircuit, MonitorSmartphone, Eye];
+const SERVICE_ICONS = [SearchCheck, Bot, MonitorSmartphone, CircleGauge];
 
 export function ServicesSection({ lang, tr }: SectionProps) {
   return (
@@ -482,7 +482,7 @@ export function ServicesSection({ lang, tr }: SectionProps) {
                       "inset 0 0 0 1px color-mix(in oklab, var(--destructive) 60%, transparent), 0 0 60px -10px var(--destructive)",
                   }}
                 />
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-[color:var(--glow)]/15 text-[color:var(--ink-5)]">
+                <div className="neon-icon-box inline-flex h-11 w-11 items-center justify-center rounded-2xl">
                   <Icon className="h-5 w-5" />
                 </div>
                 <h3 className="mt-5 text-lg font-semibold text-[color:var(--ink-5)]">{item.t}</h3>
@@ -512,7 +512,7 @@ export function ServicesSection({ lang, tr }: SectionProps) {
   );
 }
 
-const INDUSTRY_ICONS = [HomeIcon, Stethoscope, User, Briefcase];
+const INDUSTRY_ICONS = [Building2, HeartPulse, User, Handshake];
 
 export function IndustriesSection({ lang, tr }: SectionProps) {
   return (
@@ -541,7 +541,7 @@ export function IndustriesSection({ lang, tr }: SectionProps) {
                 <div className="h-28 rounded-2xl border border-white/10 relative overflow-hidden">
                   <div className="absolute -inset-10 opacity-60 bg-[radial-gradient(circle_at_50%_50%,var(--glow),transparent_60%)]" />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <Icon className="h-10 w-10 text-[color:var(--ink-5)]" />
+                    <Icon className="h-10 w-10 text-[color:var(--ink-5)] drop-shadow-[0_0_16px_rgba(98,184,255,0.7)]" />
                   </div>
                 </div>
                 <h3 className="mt-5 text-lg font-semibold text-[color:var(--ink-5)]">{item.t}</h3>

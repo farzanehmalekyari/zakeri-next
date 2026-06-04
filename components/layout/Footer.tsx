@@ -78,14 +78,14 @@ export function Footer({ lang, tr }: { lang: Lang; tr: Dict }) {
                 <LanguageSwitcher lang={lang} />
               </div>
             </div>
-            <div className="flex items-center gap-3 text-[color:var(--ink-4)]">
-              <a aria-label="LinkedIn" href="#" className="hover:text-[color:var(--ink-5)]">
+            <div className="flex items-center gap-3 text-[color:var(--ink-5)]">
+              <a aria-label="LinkedIn" href="#" className="neon-icon-box flex h-10 w-10 items-center justify-center rounded-2xl transition hover:brightness-110">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a aria-label="Twitter" href="#" className="hover:text-[color:var(--ink-5)]">
+              <a aria-label="Twitter" href="#" className="neon-icon-box flex h-10 w-10 items-center justify-center rounded-2xl transition hover:brightness-110">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a aria-label="Instagram" href="#" className="hover:text-[color:var(--ink-5)]">
+              <a aria-label="Instagram" href="#" className="neon-icon-box flex h-10 w-10 items-center justify-center rounded-2xl transition hover:brightness-110">
                 <Instagram className="h-5 w-5" />
               </a>
             </div>

@@ -45,7 +45,7 @@ export function LanguageSwitcher({ lang }: { lang: Lang }) {
         onClick={() => setOpen((value) => !value)}
         className="glass inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[color:var(--ink-5)] transition hover:bg-white/10"
       >
-        <Globe className="h-3.5 w-3.5 text-[color:var(--ink-4)]" aria-hidden />
+        <Globe className="h-3.5 w-3.5 text-[color:var(--glow)]" aria-hidden />
         <span>{currentLang.native}</span>
         <ChevronDown
           className={`h-3.5 w-3.5 text-[color:var(--ink-4)] transition ${open ? "rotate-180" : ""}`}

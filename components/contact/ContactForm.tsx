@@ -33,21 +33,25 @@ export function ContactForm({ tr }: { tr: Dict }) {
           <a
             href={publicSiteConfig.whatsappUrl}
             target="_blank"
-            rel="noreferrer"
-            className="glass rounded-3xl p-6 flex items-center gap-4 hover-lift"
-          >
-            <MessageCircle className="h-6 w-6 text-[color:var(--glow)]" />
-            <div>
+          rel="noreferrer"
+          className="glass rounded-3xl p-6 flex items-center gap-4 hover-lift"
+        >
+          <span className="neon-icon-box flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl">
+            <MessageCircle className="h-6 w-6" />
+          </span>
+          <div>
               <div className="text-[color:var(--ink-5)] font-semibold">WhatsApp</div>
               <div className="text-sm text-[color:var(--ink-4)]">{tr.cta.whatsapp}</div>
             </div>
           </a>
           <a
-            href={`mailto:${publicSiteConfig.contactEmail}`}
-            className="glass rounded-3xl p-6 flex items-center gap-4 hover-lift"
-          >
-            <Mail className="h-6 w-6 text-[color:var(--glow)]" />
-            <div>
+          href={`mailto:${publicSiteConfig.contactEmail}`}
+          className="glass rounded-3xl p-6 flex items-center gap-4 hover-lift"
+        >
+          <span className="neon-icon-box flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl">
+            <Mail className="h-6 w-6" />
+          </span>
+          <div>
               <div className="text-[color:var(--ink-5)] font-semibold">Email</div>
               <div className="text-sm text-[color:var(--ink-4)]">
                 {publicSiteConfig.contactEmail}

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowUpRight, BrainCircuit, Eye, MonitorSmartphone, Search } from "lucide-react";
+import { ArrowUpRight, Bot, CircleGauge, MonitorSmartphone, SearchCheck } from "lucide-react";
 import { PageHero } from "@/components/pages/PageHero";
 import { createPageMetadata } from "@/lib/metadata";
 import { getRouteLang, type LocalePageProps } from "@/i18n/server";
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
   });
 }
 
-const ICONS = [Search, BrainCircuit, MonitorSmartphone, Eye];
+const ICONS = [SearchCheck, Bot, MonitorSmartphone, CircleGauge];
 
 export default async function ServicesPage({ params }: LocalePageProps) {
   const lang = await getRouteLang(params);
@@ -34,7 +34,7 @@ export default async function ServicesPage({ params }: LocalePageProps) {
             const Icon = ICONS[i];
             return (
               <article key={i} className="glass rounded-3xl p-7 hover-lift">
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-[color:var(--glow)]/15 text-[color:var(--ink-5)]">
+                <div className="neon-icon-box inline-flex h-11 w-11 items-center justify-center rounded-2xl">
                   <Icon className="h-5 w-5" />
                 </div>
                 <h2 className="mt-5 text-2xl font-semibold text-[color:var(--ink-5)]">

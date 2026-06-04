@@ -35,20 +35,20 @@ export function Header({ lang, tr }: { lang: Lang; tr: Dict }) {
   ];
 
   const navClass = (href: SitePath) =>
-    `rounded-full px-3 py-1.5 text-sm transition hover:text-[color:var(--ink-5)] hover:bg-white/5 ${
+    `rounded-full px-3 py-1.5 text-sm transition hover:text-[color:var(--ink-5)] hover:bg-white/10 ${
       activePath === href
-        ? "text-[color:var(--ink-5)] bg-white/5"
+        ? "text-[color:var(--ink-5)] bg-[linear-gradient(110deg,rgba(98,184,255,0.20),rgba(244,126,232,0.12))] shadow-[0_0_24px_-14px_var(--glow)]"
         : "text-[color:var(--ink-4)]"
     }`;
 
   return (
     <>
-      <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-          scrolled ? "glass-strong" : "bg-transparent"
-        }`}
-      >
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 md:px-8">
+      <header className="fixed inset-x-0 top-3 z-50 px-4 transition-all duration-500">
+        <div
+          className={`site-header-shell mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3 transition duration-500 md:px-8 ${
+            scrolled ? "shadow-[0_0_46px_-24px_var(--glow)]" : ""
+          }`}
+        >
           <Link href={withLocalePath(lang, "/")} className="flex items-center gap-3">
             <Image src="/images/logo.png" alt="MZ" className="h-9 w-9" width={36} height={36} />
             <div className="hidden md:block leading-tight">
@@ -77,7 +77,7 @@ export function Header({ lang, tr }: { lang: Lang; tr: Dict }) {
               href={publicSiteConfig.whatsappUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center rounded-full border border-[color:var(--glow)]/35 bg-[color:var(--glow)]/15 px-3 py-1.5 text-sm font-medium text-[color:var(--ink-5)] transition hover:bg-[color:var(--glow)]/25 hover:text-white"
+              className="btn-primary px-4 py-2 text-sm"
             >
               WhatsApp
             </a>
@@ -150,7 +150,7 @@ export function Header({ lang, tr }: { lang: Lang; tr: Dict }) {
               onClick={() => setOpen(false)}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex justify-center rounded-2xl border border-[color:var(--glow)]/35 bg-[color:var(--glow)]/15 px-4 py-3 text-base font-medium text-[color:var(--ink-5)] transition hover:bg-[color:var(--glow)]/25"
+              className="btn-primary justify-center px-4 py-3 text-base"
             >
               WhatsApp
             </a>
@@ -183,7 +183,7 @@ export function Header({ lang, tr }: { lang: Lang; tr: Dict }) {
             target="_blank"
             rel="noreferrer"
             aria-label="WhatsApp"
-            className="ml-1 inline-flex items-center justify-center rounded-full bg-[color:var(--neon-lime)]/90 text-[color:var(--ink-1)] w-10 h-10"
+            className="ml-1 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/35 bg-[linear-gradient(135deg,var(--glow),var(--neon-magenta))] text-white shadow-[0_0_24px_-8px_var(--glow)]"
           >
             <MessageCircle className="h-5 w-5" />
           </a>
