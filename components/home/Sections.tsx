@@ -9,6 +9,8 @@ import {
   BarChart3,
   BrainCircuit,
   Briefcase,
+  ChevronLeft,
+  ChevronRight,
   Eye,
   Globe2,
   Home as HomeIcon,
@@ -237,6 +239,14 @@ export function ProblemSection({ tr }: SectionProps) {
 }
 
 const SOLUTION_ICONS = [TrendingUp, Search, BrainCircuit, ShieldCheck, Workflow, BarChart3];
+const SOLUTION_IMAGES = [
+  "/images/Conversion.png",
+  "/images/SEO-ready.png",
+  "/images/AI-ready.png",
+  "/images/Trust.png",
+  "/images/Lead.png",
+  "/images/Analytics.png",
+];
 
 export function SolutionSection({ lang, tr }: SectionProps) {
   return (
@@ -263,8 +273,14 @@ export function SolutionSection({ lang, tr }: SectionProps) {
                 </div>
                 <h3 className="mt-5 text-lg font-semibold text-[color:var(--ink-5)]">{card.t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-[color:var(--ink-4)]">{card.d}</p>
-                <div className="mt-6 h-28 rounded-2xl border border-white/10 bg-gradient-to-br from-[color:var(--ink-2)]/60 to-transparent relative overflow-hidden">
-                  <div className="absolute -inset-10 opacity-40 bg-[radial-gradient(circle_at_30%_40%,var(--glow),transparent_60%)]" />
+                <div className="relative mt-6 aspect-square overflow-hidden rounded-2xl border border-white/10 bg-[color:var(--ink-1)]">
+                  <Image
+                    src={SOLUTION_IMAGES[i]}
+                    alt={card.t}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover"
+                  />
                 </div>
               </article>
             );
@@ -294,6 +310,18 @@ const CASE_IMAGES = [
 const CASE_ICONS = [HomeIcon, Stethoscope, User, Briefcase];
 
 export function CasesSection({ lang, tr }: SectionProps) {
+  const casesCarouselRef = useRef<HTMLDivElement | null>(null);
+
+  const scrollCases = (direction: -1 | 1) => {
+    const carousel = casesCarouselRef.current;
+    if (!carousel) return;
+
+    carousel.scrollBy({
+      left: carousel.clientWidth * 0.72 * direction,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section className="relative py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
@@ -305,75 +333,97 @@ export function CasesSection({ lang, tr }: SectionProps) {
           <p className="mt-4 text-[color:var(--ink-4)] text-lg">{tr.cases.sub}</p>
         </div>
 
-        <div className="mt-12 -mx-6 md:-mx-10 px-14 md:px-20 overflow-x-auto snap-x snap-mandatory scroll-px-14 md:scroll-px-20 scrollbar-none">
-          <div className="flex items-start gap-10 pt-20 pb-40 md:gap-12 md:pt-20 md:pb-40 group/list">
-            {tr.cases.items.map((item, i) => {
-              const Icon = CASE_ICONS[i];
-              const cardClassName = [
-                "group group/card relative isolate flex snap-start shrink-0 flex-col glass rounded-[2rem] p-5 transition-all duration-500 will-change-transform",
-                "w-[86%] sm:w-[62%] lg:w-[22rem]",
-                "lg:group-hover/list:opacity-35 lg:group-hover/list:brightness-50",
-                "hover:z-20 hover:-translate-y-4 hover:!scale-[1.045] hover:!opacity-100 hover:!brightness-100 hover:shadow-[0_24px_70px_-34px_var(--glow)] hover:ring-1 hover:ring-[color:var(--glow)]",
-              ].join(" ");
-              const imageClassName = [
-                "relative overflow-hidden rounded-[1.4rem] border border-white/10 bg-[color:var(--ink-1)] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition-all duration-500",
-                "h-56 sm:h-60 lg:h-64",
-              ].join(" ");
-              return (
-                <article
-                  key={i}
-                  className={cardClassName}
-                >
-                  <div className={imageClassName}>
-                    <Image
-                      src={CASE_IMAGES[i]}
-                      alt={item.industry}
-                      fill
-                      sizes="(min-width: 1024px) 28vw, (min-width: 640px) 60vw, 85vw"
-                      className="object-cover"
-                    />
-                    <div
-                      className={[
-                        "absolute inset-0 bg-gradient-to-t from-[color:var(--ink-1)]/50 via-transparent to-transparent transition duration-500 group-hover/card:opacity-10",
-                        "opacity-50",
-                      ].join(" ")}
-                    />
-                  </div>
-                  <div className="mt-4 flex items-center gap-2 text-[11px] uppercase tracking-widest text-[color:var(--ink-4)]">
-                    <Icon className="h-3.5 w-3.5" /> {item.industry}
-                  </div>
-                  <h3 className="mt-2 text-[color:var(--ink-5)] font-semibold">{item.goal}</h3>
-                  <Link
-                    href={withLocalePath(lang, "/portfolio")}
-                    className="mt-5 inline-flex items-center gap-1 text-sm text-[color:var(--glow)] hover:text-[color:var(--glow-strong)]"
+        <div className="relative mt-12 -mx-6 md:-mx-10">
+          <button
+            type="button"
+            aria-label="Scroll case studies left"
+            onClick={() => scrollCases(-1)}
+            className="absolute left-4 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-[color:var(--ink-2)]/80 text-[color:var(--ink-5)] shadow-[0_16px_45px_-22px_var(--glow)] backdrop-blur transition hover:border-[color:var(--glow)]/60 hover:bg-[color:var(--ink-2)] md:left-8"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <button
+            type="button"
+            aria-label="Scroll case studies right"
+            onClick={() => scrollCases(1)}
+            className="absolute right-4 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-[color:var(--ink-2)]/80 text-[color:var(--ink-5)] shadow-[0_16px_45px_-22px_var(--glow)] backdrop-blur transition hover:border-[color:var(--glow)]/60 hover:bg-[color:var(--ink-2)] md:right-8"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+
+          <div
+            ref={casesCarouselRef}
+            className="px-14 md:px-20 overflow-x-auto snap-x snap-mandatory scroll-px-14 md:scroll-px-20 scrollbar-none"
+          >
+            <div className="flex items-start gap-10 pt-20 pb-40 md:gap-12 md:pt-20 md:pb-40 group/list">
+              {tr.cases.items.map((item, i) => {
+                const Icon = CASE_ICONS[i];
+                const cardClassName = [
+                  "group group/card relative isolate flex snap-start shrink-0 flex-col glass rounded-[2rem] p-5 transition-all duration-500 will-change-transform",
+                  "w-[86%] sm:w-[62%] lg:w-[22rem]",
+                  "lg:group-hover/list:opacity-35 lg:group-hover/list:brightness-50",
+                  "hover:z-20 hover:-translate-y-4 hover:!scale-[1.045] hover:!opacity-100 hover:!brightness-100 hover:shadow-[0_24px_70px_-34px_var(--glow)] hover:ring-1 hover:ring-[color:var(--glow)]",
+                ].join(" ");
+                const imageClassName = [
+                  "relative overflow-hidden rounded-[1.4rem] border border-white/10 bg-[color:var(--ink-1)] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition-all duration-500",
+                  "h-56 sm:h-60 lg:h-64",
+                ].join(" ");
+                return (
+                  <article
+                    key={i}
+                    className={cardClassName}
                   >
-                    {tr.cta.learn} <ArrowUpRight className="h-3.5 w-3.5" />
-                  </Link>
-
-                  <div className="pointer-events-none absolute inset-0 z-10 rounded-[inherit] bg-[color:var(--ink-1)]/60 opacity-0 transition duration-500 lg:group-hover/list:opacity-100 group-hover/card:!opacity-0" />
-
-                  <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 -bottom-6 z-20 w-[88%] rounded-2xl border border-white/15 bg-[color:var(--ink-2)] p-4 opacity-0 shadow-[0_24px_80px_-24px_rgba(0,0,0,0.9)] translate-y-3 transition duration-500 group-hover:opacity-100 group-hover:translate-y-0">
-                    <Quote className="h-4 w-4 text-[color:var(--glow)]" />
-                    <p className="mt-2 text-xs text-[color:var(--ink-4)] leading-relaxed">
-                      &quot;{tr.cases.quote}&quot;
-                    </p>
-                    <div className="mt-3 flex items-center gap-2">
+                    <div className={imageClassName}>
                       <Image
-                        src="/images/portrait.jpg"
-                        alt=""
-                        className="h-7 w-7 rounded-full object-cover"
-                        width={28}
-                        height={28}
+                        src={CASE_IMAGES[i]}
+                        alt={item.industry}
+                        fill
+                        sizes="(min-width: 1024px) 28vw, (min-width: 640px) 60vw, 85vw"
+                        className="object-cover"
                       />
-                      <div className="text-[11px] text-[color:var(--ink-5)]">
-                        {tr.cases.who.name}{" "}
-                        <span className="text-[color:var(--ink-4)]/70">— {tr.cases.who.role}</span>
+                      <div
+                        className={[
+                          "absolute inset-0 bg-gradient-to-t from-[color:var(--ink-1)]/50 via-transparent to-transparent transition duration-500 group-hover/card:opacity-10",
+                          "opacity-50",
+                        ].join(" ")}
+                      />
+                    </div>
+                    <div className="mt-4 flex items-center gap-2 text-[11px] uppercase tracking-widest text-[color:var(--ink-4)]">
+                      <Icon className="h-3.5 w-3.5" /> {item.industry}
+                    </div>
+                    <h3 className="mt-2 text-[color:var(--ink-5)] font-semibold">{item.goal}</h3>
+                    <Link
+                      href={withLocalePath(lang, "/portfolio")}
+                      className="mt-5 inline-flex items-center gap-1 text-sm text-[color:var(--glow)] hover:text-[color:var(--glow-strong)]"
+                    >
+                      {tr.cta.learn} <ArrowUpRight className="h-3.5 w-3.5" />
+                    </Link>
+
+                    <div className="pointer-events-none absolute inset-0 z-10 rounded-[inherit] bg-[color:var(--ink-1)]/60 opacity-0 transition duration-500 lg:group-hover/list:opacity-100 group-hover/card:!opacity-0" />
+
+                    <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 -bottom-6 z-20 w-[88%] rounded-2xl border border-white/15 bg-[color:var(--ink-2)] p-4 opacity-0 shadow-[0_24px_80px_-24px_rgba(0,0,0,0.9)] translate-y-3 transition duration-500 group-hover:opacity-100 group-hover:translate-y-0">
+                      <Quote className="h-4 w-4 text-[color:var(--glow)]" />
+                      <p className="mt-2 text-xs text-[color:var(--ink-4)] leading-relaxed">
+                        &quot;{tr.cases.quote}&quot;
+                      </p>
+                      <div className="mt-3 flex items-center gap-2">
+                        <Image
+                          src="/images/portrait.jpg"
+                          alt=""
+                          className="h-7 w-7 rounded-full object-cover"
+                          width={28}
+                          height={28}
+                        />
+                        <div className="text-[11px] text-[color:var(--ink-5)]">
+                          {tr.cases.who.name}{" "}
+                          <span className="text-[color:var(--ink-4)]/70">— {tr.cases.who.role}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </article>
-              );
-            })}
+                  </article>
+                );
+              })}
+            </div>
           </div>
         </div>
 
