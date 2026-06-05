@@ -60,7 +60,7 @@ export const t: Record<Lang, Dict> = {
       badge: "AI-Era Website Growth",
       title: "Websites Built to Attract Traffic, Build Trust, and Convert Customers",
       highlight: "Attract Traffic",
-      subtitle: "We design high-performance websites, web applications, SEO/GEO systems, and AI-ready visibility structures that help businesses grow from the internet.",
+      subtitle: "We design websites, web apps, SEO/GEO systems, and AI-ready structures that help businesses grow from the internet.",
       mini: ["High-Performance Websites", "Search & AI Ready", "Lead Generation System"],
       miniDescriptions: [
         "Fast, premium websites built to support real business growth.",
@@ -218,7 +218,7 @@ export const t: Record<Lang, Dict> = {
       badge: "رشد وب‌سایت در عصر AI",
       title: "وب‌سایت‌هایی که ترافیک جذب می‌کنند، اعتماد می‌سازند و بازدیدکننده را به مشتری تبدیل می‌کنند",
       highlight: "ترافیک جذب می‌کنند",
-      subtitle: "ما وب‌سایت‌ها، وب‌اپلیکیشن‌ها، ساختارهای SEO/GEO و سیستم‌های آماده برای AI طراحی می‌کنیم تا کسب‌وکارها از اینترنت رشد کنند.",
+      subtitle: "ما وب‌سایت، وب‌اپلیکیشن، ساختار SEO/GEO و سیستم‌های آماده برای AI طراحی می‌کنیم تا کسب‌وکارها از اینترنت رشد کنند.",
       mini: ["وب‌سایت پرفورمنس بالا", "آماده برای جستجو و AI", "سیستم جذب لید"],
       miniDescriptions: [
         "وب‌سایت سریع، حرفه‌ای و جدی برای رشد واقعی کسب‌وکار.",
@@ -376,7 +376,7 @@ export const t: Record<Lang, Dict> = {
       badge: "نمو المواقع في عصر الذكاء الاصطناعي",
       title: "مواقع تجذب الزيارات، تبني الثقة، وتحول الزائر إلى عميل",
       highlight: "تجذب الزيارات",
-      subtitle: "نصمم مواقع عالية الأداء، تطبيقات ويب، أنظمة SEO/GEO، وبنية ظهور جاهزة للذكاء الاصطناعي لمساعدة الأعمال على النمو من الإنترنت.",
+      subtitle: "نصمم مواقع، تطبيقات ويب، أنظمة SEO/GEO، وبنية جاهزة للـ AI لمساعدة الأعمال على النمو من الإنترنت.",
       mini: ["مواقع عالية الأداء", "جاهزة للبحث و AI", "نظام توليد عملاء"],
       miniDescriptions: [
         "مواقع سريعة واحترافية ومناسبة لنمو الأعمال الجاد.",

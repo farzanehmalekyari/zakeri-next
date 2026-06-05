@@ -62,8 +62,8 @@ export function Hero({ lang, tr }: SectionProps) {
       <div className="absolute inset-0 bg-gradient-to-b from-[color:var(--ink-1)]/10 via-[color:var(--ink-1)]/5 to-[color:var(--ink-1)]/10" />
       <div className="dot-grid absolute inset-0 opacity-50" />
 
-      <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-center px-6 pt-36 pb-16 md:items-start md:px-10 md:pt-44 lg:min-h-screen">
-        <div className="hero-glass animate-float relative w-full max-w-2xl lg:max-w-[42rem] rounded-[3rem] md:rounded-[3.5rem] p-8 md:p-11 lg:p-12">
+      <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-center px-6 pt-32 pb-10 md:items-start md:px-10 md:pt-40 md:pb-10 lg:min-h-screen lg:pb-8">
+        <div className="hero-glass animate-float relative w-full max-w-2xl lg:max-w-[42rem] rounded-[3rem] md:rounded-[3.5rem] p-7 md:p-9 lg:p-10">
           <span
             className="hero-corner -top-6 -left-6"
             style={{
@@ -94,7 +94,7 @@ export function Hero({ lang, tr }: SectionProps) {
             </div>
           </div>
 
-          <h1 className="relative mt-7 text-4xl md:text-5xl lg:text-[3.75rem] font-semibold leading-[1.05] text-[color:var(--ink-5)]">
+          <h1 className="relative mt-6 text-3xl md:text-[2.65rem] lg:text-[3.05rem] xl:text-[3.25rem] font-semibold leading-[1.08] text-[color:var(--ink-5)]">
             {before}
             {index >= 0 && (
               <span
@@ -110,16 +110,16 @@ export function Hero({ lang, tr }: SectionProps) {
             {after}
           </h1>
 
-          <div className="relative mt-6 h-px w-40 overflow-hidden">
+          <div className="relative mt-5 h-px w-40 overflow-hidden">
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[color:var(--glow-strong)] to-transparent" />
             <span className="absolute inset-0 blur-[3px] bg-gradient-to-r from-transparent via-[color:var(--glow)] to-transparent" />
           </div>
 
-          <p className="relative mt-6 text-base md:text-lg text-[color:var(--ink-4)] leading-relaxed max-w-xl">
+          <p className="relative mt-5 max-w-xl text-base leading-relaxed text-[color:var(--ink-4)]">
             {tr.hero.subtitle}
           </p>
 
-          <div className="relative mt-8 flex flex-wrap items-center gap-3">
+          <div className="relative mt-7 flex flex-wrap items-center gap-3">
             <Link href={withLocalePath(lang, "/contact")} className="btn-luxe">
               {tr.cta.build} <ArrowRight className="h-4 w-4 flip-rtl relative z-10" />
             </Link>
@@ -132,7 +132,7 @@ export function Hero({ lang, tr }: SectionProps) {
           </div>
         </div>
 
-        <div className="hero-feature-grid mt-8 grid w-full max-w-[73rem] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="hero-feature-grid mt-6 grid w-full max-w-[73rem] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {featureCards.map((item, i) => (
             <article
               key={item.label}
@@ -143,10 +143,10 @@ export function Hero({ lang, tr }: SectionProps) {
                 <item.icon className="h-7 w-7" strokeWidth={1.85} />
               </span>
               <div className="min-w-0 text-start">
-                <h2 className="text-xl font-semibold leading-tight text-[color:var(--ink-5)] md:text-2xl">
+                <h2 className="text-lg font-semibold leading-tight text-[color:var(--ink-5)] md:text-xl">
                   {item.label}
                 </h2>
-                <p className="mt-3 max-w-[18rem] text-sm leading-relaxed text-[color:var(--ink-4)] md:text-base">
+                <p className="mt-2 max-w-[18rem] text-sm leading-relaxed text-[color:var(--ink-4)]">
                   {item.description}
                 </p>
               </div>
