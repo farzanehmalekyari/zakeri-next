@@ -23,7 +23,7 @@ export type Dict = {
   problem: { title: string; sub: string; cards: { t: string; d: string }[] };
   solution: { badge: string; title: string; sub: string; cards: { t: string; d: string }[]; strip: string };
   cases: { badge: string; title: string; sub: string; items: { industry: string; goal: string }[]; quote: string; who: { name: string; role: string } };
-  services: { title: string; sub: string; items: { t: string; d: string }[] };
+  services: { title: string; sub: string; items: { t: string; d: string; bullets: string[] }[] };
   industries: { badge: string; titleA: string; titleHL: string; titleB: string; sub: string; items: { t: string; d: string }[] };
   finalCta: { title: string; sub: string };
   trust: string[];
@@ -91,10 +91,26 @@ export const t: Record<Lang, Dict> = {
       title: "Growth Engines for the AI Era",
       sub: "Strategic digital systems designed to improve visibility, trust, performance, and lead generation.",
       items: [
-        { t: "GEO & AEO Ranking", d: "Get discovered by AI engines and search where it matters." },
-        { t: "AI Solution", d: "Intelligent automations and AI systems that drive real impact." },
-        { t: "Website & Web Application", d: "Fast, secure, and scalable digital experiences that perform." },
-        { t: "AI Visibility", d: "Increase your brand's visibility across AI answers and platforms." },
+        {
+          t: "GEO & AEO Ranking",
+          d: "Get discovered by AI engines and search where it matters.",
+          bullets: ["AI answer optimization", "Entity and schema strategy", "Technical SEO foundations", "Analytics & reporting"],
+        },
+        {
+          t: "AI Solution",
+          d: "Intelligent automations and AI systems that drive real impact.",
+          bullets: ["Workflow automation", "Custom AI assistants", "API and tool integrations", "Performance monitoring"],
+        },
+        {
+          t: "Website & Web Application",
+          d: "Fast, secure, and scalable digital experiences that perform.",
+          bullets: ["Responsive web design", "Custom web applications", "CMS and integrations", "Performance & security"],
+        },
+        {
+          t: "AI Visibility",
+          d: "Increase your brand's visibility across AI answers and platforms.",
+          bullets: ["LLM discovery mapping", "Structured content systems", "Brand authority signals", "Visibility reporting"],
+        },
       ],
     },
     industries: {
@@ -199,10 +215,26 @@ export const t: Record<Lang, Dict> = {
       title: "موتورهای رشد برای عصر هوش مصنوعی",
       sub: "سیستم‌های دیجیتال استراتژیک برای دیده‌شدن، اعتماد، عملکرد و تولید سرنخ.",
       items: [
-        { t: "رتبه‌بندی GEO و AEO", d: "دیده‌شدن در موتورهای AI و سرچ مدرن." },
-        { t: "راهکار هوش مصنوعی", d: "اتوماسیون‌های هوشمند با اثر واقعی." },
-        { t: "وب‌سایت و وب‌اپلیکیشن", d: "تجربه‌های دیجیتال سریع، امن و مقیاس‌پذیر." },
-        { t: "دیده‌شدن در AI", d: "افزایش حضور برند در پاسخ‌های مدل‌های زبانی." },
+        {
+          t: "رتبه‌بندی GEO و AEO",
+          d: "دیده‌شدن در موتورهای AI و سرچ مدرن.",
+          bullets: ["بهینه‌سازی پاسخ‌های AI", "استراتژی Entity و Schema", "پایه‌های فنی سئو", "تحلیل و گزارش‌دهی"],
+        },
+        {
+          t: "راهکار هوش مصنوعی",
+          d: "اتوماسیون‌های هوشمند با اثر واقعی.",
+          bullets: ["اتوماسیون فرایندها", "دستیارهای اختصاصی AI", "اتصال API و ابزارها", "پایش عملکرد"],
+        },
+        {
+          t: "وب‌سایت و وب‌اپلیکیشن",
+          d: "تجربه‌های دیجیتال سریع، امن و مقیاس‌پذیر.",
+          bullets: ["طراحی وب واکنش‌گرا", "وب‌اپلیکیشن اختصاصی", "CMS و یکپارچه‌سازی‌ها", "عملکرد و امنیت"],
+        },
+        {
+          t: "دیده‌شدن در AI",
+          d: "افزایش حضور برند در پاسخ‌های مدل‌های زبانی.",
+          bullets: ["نقشه دیده‌شدن در LLM", "سیستم محتوای ساختاریافته", "سیگنال‌های اعتبار برند", "گزارش دیده‌شدن"],
+        },
       ],
     },
     industries: {
@@ -307,10 +339,26 @@ export const t: Record<Lang, Dict> = {
       title: "محركات النمو لعصر الذكاء الاصطناعي",
       sub: "أنظمة رقمية استراتيجية لتحسين الظهور والثقة والأداء.",
       items: [
-        { t: "ترتيب GEO و AEO", d: "كُن مرئيًا لمحركات الذكاء الاصطناعي." },
-        { t: "حلول الذكاء الاصطناعي", d: "أتمتة ذكية بأثر حقيقي." },
-        { t: "مواقع وتطبيقات", d: "تجارب سريعة وآمنة وقابلة للتوسع." },
-        { t: "ظهور في AI", d: "زِد حضورك في إجابات الذكاء الاصطناعي." },
+        {
+          t: "ترتيب GEO و AEO",
+          d: "كُن مرئيًا لمحركات الذكاء الاصطناعي.",
+          bullets: ["تحسين إجابات AI", "استراتيجية الكيان و Schema", "أساسيات SEO التقنية", "تحليلات وتقارير"],
+        },
+        {
+          t: "حلول الذكاء الاصطناعي",
+          d: "أتمتة ذكية بأثر حقيقي.",
+          bullets: ["أتمتة سير العمل", "مساعدو AI مخصصون", "تكاملات API والأدوات", "مراقبة الأداء"],
+        },
+        {
+          t: "مواقع وتطبيقات",
+          d: "تجارب سريعة وآمنة وقابلة للتوسع.",
+          bullets: ["تصميم ويب متجاوب", "تطبيقات ويب مخصصة", "CMS وتكاملات", "الأداء والأمان"],
+        },
+        {
+          t: "ظهور في AI",
+          d: "زِد حضورك في إجابات الذكاء الاصطناعي.",
+          bullets: ["خريطة ظهور LLM", "أنظمة محتوى منظمة", "إشارات سلطة العلامة", "تقارير الظهور"],
+        },
       ],
     },
     industries: {
