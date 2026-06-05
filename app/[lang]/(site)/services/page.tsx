@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
   return createPageMetadata({
     lang,
     path: "/services",
-    title: "Services — Mohammadreza Zakari",
+    title: "Services — Mohammadreza Zakeri",
     description:
       "GEO, AEO, AI visibility, websites and AI solutions for high-trust businesses.",
     openGraphDescription: "Growth engines for the AI era.",

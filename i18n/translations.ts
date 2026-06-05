@@ -43,7 +43,7 @@ export type Dict = {
 
 export const t: Record<Lang, Dict> = {
   en: {
-    brand: "Mohammadreza Zakari",
+    brand: "Mohammadreza Zakeri",
     subname: "AI-era Digital Growth Architect",
     nav: { home: "Home", services: "Services", portfolio: "Portfolio", pricing: "Pricing", insights: "Insights", about: "About", contact: "Contact", faq: "FAQ" },
     cta: {

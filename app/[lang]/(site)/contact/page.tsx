@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
   return createPageMetadata({
     lang,
     path: "/contact",
-    title: "Contact — Mohammadreza Zakari",
+    title: "Contact — Mohammadreza Zakeri",
     description: "Tell us about your business and goals.",
     openGraphDescription: "Let's build your growth engine.",
   });

@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
   return createPageMetadata({
     lang,
     path: "/",
-    title: "Mohammadreza Zakari — AI-era Digital Growth Architect",
+    title: "Mohammadreza Zakeri — AI-era Digital Growth Architect",
     description:
       "We design websites and digital systems that attract traffic, build trust, and convert visitors into customers — built for the AI era.",
     openGraphDescription: "Found. Trusted. Chosen. Growth infrastructure for high-trust businesses.",
@@ -34,7 +34,7 @@ export default async function HomePage({ params }: LocalePageProps) {
   const personJsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "Mohammadreza Zakari",
+    name: "Mohammadreza Zakeri",
     jobTitle: "AI-era Digital Growth Architect",
     url: withLocalePath(lang, "/"),
     sameAs: [],
@@ -43,7 +43,7 @@ export default async function HomePage({ params }: LocalePageProps) {
   const organizationJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Mohammadreza Zakari",
+    name: "Mohammadreza Zakeri",
     description: "AI-era digital growth infrastructure for high-trust businesses.",
     url: withLocalePath(lang, "/"),
   };

@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
   return createPageMetadata({
     lang,
     path: "/portfolio",
-    title: "Portfolio & Case Studies — Mohammadreza Zakari",
+    title: "Portfolio & Case Studies — Mohammadreza Zakeri",
     description:
       "Selected work for real estate consultants, clinics, personal brands and consultants.",
     openGraphDescription: "Real projects. Real results.",

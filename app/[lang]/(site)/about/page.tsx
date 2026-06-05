@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
   return createPageMetadata({
     lang,
     path: "/about",
-    title: "About — Mohammadreza Zakari",
+    title: "About — Mohammadreza Zakeri",
     description: "Founder-led digital growth consultant for high-trust businesses.",
     openGraphDescription: "Founder-led. Outcome-obsessed. Built for the AI era.",
   });
