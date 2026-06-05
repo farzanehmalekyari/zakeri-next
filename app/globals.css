@@ -263,9 +263,18 @@
 
   .glass svg,
   .glass-strong svg,
+  .solution-scroll-cue svg,
   .btn-primary svg,
   .btn-ghost svg {
     filter: drop-shadow(0 0 8px rgba(98,184,255,0.42));
+  }
+
+  .solution-scroll-cue svg {
+    animation: solution-scroll-cue-ltr 1.7s ease-in-out infinite;
+  }
+
+  html[dir="rtl"] .solution-scroll-cue svg {
+    animation-name: solution-scroll-cue-rtl;
   }
 
   /* Premium cinematic glass panel for hero */
@@ -618,6 +627,16 @@
 @keyframes spin-border { to { --ang: 360deg; } }
 @property --ang { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
 
+@keyframes solution-scroll-cue-ltr {
+  0%, 100% { transform: translateX(-3px); opacity: .7; }
+  50% { transform: translateX(4px); opacity: 1; }
+}
+
+@keyframes solution-scroll-cue-rtl {
+  0%, 100% { transform: translateX(3px); opacity: .7; }
+  50% { transform: translateX(-4px); opacity: 1; }
+}
+
 @keyframes float-card {
   0%, 100% { transform: perspective(1050px) rotateY(12deg) rotateX(3.8deg) rotateZ(1.05deg) translate3d(0, 0, 0) scale(1); }
   50% { transform: perspective(1050px) rotateY(10.5deg) rotateX(3.1deg) rotateZ(0.75deg) translate3d(-5px, -10px, 24px) scale(1.006); }
@@ -636,6 +655,10 @@ html[dir="rtl"] .animate-float { animation-name: float-card-rtl; }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-feature-card {
+    animation: none;
+  }
+
+  .solution-scroll-cue svg {
     animation: none;
   }
 }

@@ -19,6 +19,7 @@ import {
   HeartPulse,
   MessageCircle,
   MonitorSmartphone,
+  MoveHorizontal,
   PencilRuler,
   Quote,
   Search,
@@ -274,32 +275,42 @@ export function SolutionSection({ lang, tr }: SectionProps) {
           <h2 className="mt-5 text-3xl md:text-5xl font-semibold text-gradient">{tr.solution.title}</h2>
           <p className="mt-4 text-[color:var(--ink-4)] text-lg">{tr.solution.sub}</p>
         </div>
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {tr.solution.cards.map((card, i) => {
-            const Icon = SOLUTION_ICONS[i];
-            return (
-              <article
-                key={i}
-                className="group glass luminous-border rounded-3xl p-6 hover-lift overflow-hidden animate-fade-up"
-                style={{ animationDelay: `${i * 60}ms` }}
-              >
-                <div className="neon-icon-box inline-flex h-11 w-11 items-center justify-center rounded-2xl">
-                  <Icon className="h-5 w-5" />
-                </div>
-                <h3 className="mt-5 text-lg font-semibold text-[color:var(--ink-5)]">{card.t}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-[color:var(--ink-4)]">{card.d}</p>
-                <div className="relative mt-6 aspect-square overflow-hidden rounded-2xl border border-white/10 bg-[color:var(--ink-1)]">
-                  <Image
-                    src={SOLUTION_IMAGES[i]}
-                    alt={card.t}
-                    fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover"
-                  />
-                </div>
-              </article>
-            );
-          })}
+        <div className="relative mt-10 -mx-6 md:mx-0 md:mt-14">
+          <div
+            aria-hidden
+            className="solution-scroll-cue pointer-events-none absolute end-7 top-3 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-[color:var(--ink-2)]/80 text-[color:var(--ink-5)] shadow-[0_16px_45px_-22px_var(--glow)] backdrop-blur md:hidden"
+          >
+            <MoveHorizontal className="h-5 w-5" />
+          </div>
+          <div className="overflow-x-auto scroll-px-6 snap-x snap-mandatory px-6 pb-3 scrollbar-none md:overflow-visible md:px-0 md:pb-0">
+            <div className="flex gap-5 md:grid md:grid-cols-2 lg:grid-cols-3">
+              {tr.solution.cards.map((card, i) => {
+                const Icon = SOLUTION_ICONS[i];
+                return (
+                  <article
+                    key={i}
+                    className="group glass luminous-border flex w-[82vw] max-w-[22rem] shrink-0 snap-start flex-col overflow-hidden rounded-3xl p-6 animate-fade-up hover-lift md:w-auto md:max-w-none md:shrink"
+                    style={{ animationDelay: `${i * 60}ms` }}
+                  >
+                    <div className="neon-icon-box inline-flex h-11 w-11 items-center justify-center rounded-2xl">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="mt-5 text-lg font-semibold text-[color:var(--ink-5)]">{card.t}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[color:var(--ink-4)]">{card.d}</p>
+                    <div className="relative mt-6 aspect-square overflow-hidden rounded-2xl border border-white/10 bg-[color:var(--ink-1)]">
+                      <Image
+                        src={SOLUTION_IMAGES[i]}
+                        alt={card.t}
+                        fill
+                        sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 82vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
         <div className="mt-12 glass-strong rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-4">
