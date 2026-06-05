@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -51,13 +51,13 @@ export function Hero({ lang, tr }: SectionProps) {
     <section className="relative w-full md:min-h-screen md:overflow-hidden">
       <div className="sticky top-0 z-0 h-svh overflow-hidden md:hidden">
         <Image
-          src="/images/hero-bg.jpg"
+          src="/images/hero-bg-mobile.jpg"
           alt=""
           aria-hidden
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[76%_50%]"
+          className="object-contain object-top"
         />
         <div className="absolute inset-0 bg-[color:var(--ink-1)]/10" />
         <div className="absolute inset-0 bg-gradient-to-b from-[color:var(--ink-1)]/10 via-[color:var(--ink-1)]/5 to-[color:var(--ink-1)]/25" />
@@ -359,11 +359,15 @@ const CASE_ICONS = [Building2, HeartPulse, User, Handshake];
 
 export function CasesSection({ lang, tr }: SectionProps) {
   const casesCarouselRef = useRef<HTMLDivElement | null>(null);
+  const [openCaseIndex, setOpenCaseIndex] = useState<number | null>(null);
+  const testimonialLabel =
+    lang === "fa" ? "مشاهده نظر مشتری" : lang === "ar" ? "عرض الشهادة" : "Read Testimonial";
 
   const scrollCases = (direction: -1 | 1) => {
     const carousel = casesCarouselRef.current;
     if (!carousel) return;
 
+    setOpenCaseIndex(null);
     carousel.scrollBy({
       left: carousel.clientWidth * 0.72 * direction,
       behavior: "smooth",
@@ -386,7 +390,7 @@ export function CasesSection({ lang, tr }: SectionProps) {
             type="button"
             aria-label="Scroll case studies left"
             onClick={() => scrollCases(-1)}
-            className="absolute left-4 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-[color:var(--ink-2)]/80 text-[color:var(--ink-5)] shadow-[0_16px_45px_-22px_var(--glow)] backdrop-blur transition hover:border-[color:var(--glow)]/60 hover:bg-[color:var(--ink-2)] md:left-8"
+            className="absolute left-2 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-[color:var(--ink-2)]/80 text-[color:var(--ink-5)] shadow-[0_16px_45px_-22px_var(--glow)] backdrop-blur transition hover:border-[color:var(--glow)]/60 hover:bg-[color:var(--ink-2)] md:left-8"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
@@ -394,14 +398,14 @@ export function CasesSection({ lang, tr }: SectionProps) {
             type="button"
             aria-label="Scroll case studies right"
             onClick={() => scrollCases(1)}
-            className="absolute right-4 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-[color:var(--ink-2)]/80 text-[color:var(--ink-5)] shadow-[0_16px_45px_-22px_var(--glow)] backdrop-blur transition hover:border-[color:var(--glow)]/60 hover:bg-[color:var(--ink-2)] md:right-8"
+            className="absolute right-2 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-[color:var(--ink-2)]/80 text-[color:var(--ink-5)] shadow-[0_16px_45px_-22px_var(--glow)] backdrop-blur transition hover:border-[color:var(--glow)]/60 hover:bg-[color:var(--ink-2)] md:right-8"
           >
             <ChevronRight className="h-5 w-5" />
           </button>
 
           <div
             ref={casesCarouselRef}
-            className="px-14 md:px-20 overflow-x-auto snap-x snap-mandatory scroll-px-14 md:scroll-px-20 scrollbar-none"
+            className="px-6 md:px-20 overflow-x-auto snap-x snap-mandatory scroll-px-6 md:scroll-px-20 scrollbar-none"
             data-mobile-hover-group
             data-mobile-hover-axis="x"
           >
@@ -410,7 +414,7 @@ export function CasesSection({ lang, tr }: SectionProps) {
                 const Icon = CASE_ICONS[i];
                 const cardClassName = [
                   "mobile-case-card group group/card relative isolate flex snap-start shrink-0 flex-col glass rounded-[2rem] p-5 transition-all duration-500 will-change-transform",
-                  "w-[86%] sm:w-[62%] lg:w-[22rem]",
+                  "w-[88vw] max-w-[23rem] sm:w-[62%] lg:w-[22rem]",
                   "lg:group-hover/list:opacity-35 lg:group-hover/list:brightness-50",
                   "hover:z-20 hover:-translate-y-4 hover:!scale-[1.045] hover:!opacity-100 hover:!brightness-100 hover:shadow-[0_24px_70px_-34px_var(--glow)] hover:ring-1 hover:ring-[color:var(--glow)]",
                 ].join(" ");
@@ -423,6 +427,7 @@ export function CasesSection({ lang, tr }: SectionProps) {
                     key={i}
                     className={cardClassName}
                     data-mobile-hover
+                    data-testimonial-open={openCaseIndex === i ? "true" : undefined}
                   >
                     <div className={imageClassName}>
                       <Image
@@ -443,10 +448,19 @@ export function CasesSection({ lang, tr }: SectionProps) {
                       <Icon className="h-3.5 w-3.5" /> {item.industry}
                     </div>
                     <h3 className="mt-2 text-[color:var(--ink-5)] font-semibold">{item.goal}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-[color:var(--ink-4)]">{item.summary}</p>
+                    <p className="mt-2 hidden text-sm leading-relaxed text-[color:var(--ink-4)] md:block">{item.summary}</p>
+                    <button
+                      type="button"
+                      className="mobile-case-testimonial-trigger mt-5 inline-flex items-center gap-1 text-sm md:hidden"
+                      aria-expanded={openCaseIndex === i}
+                      onClick={() => setOpenCaseIndex((current) => (current === i ? null : i))}
+                    >
+                      <span className="text-gradient font-medium">{testimonialLabel}</span>
+                      <Quote className="h-3.5 w-3.5 text-[color:var(--glow)]" />
+                    </button>
                     <Link
                       href={withLocalePath(lang, "/portfolio")}
-                      className="mt-5 inline-flex items-center gap-1 text-sm text-[color:var(--glow)] hover:text-[color:var(--glow-strong)]"
+                      className="mt-5 hidden items-center gap-1 text-sm text-[color:var(--glow)] hover:text-[color:var(--glow-strong)] md:inline-flex"
                     >
                       {tr.cases.cta} <ArrowUpRight className="h-3.5 w-3.5" />
                     </Link>
