@@ -48,7 +48,21 @@ export function Hero({ lang, tr }: SectionProps) {
   ];
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden">
+    <section className="relative w-full md:min-h-screen md:overflow-hidden">
+      <div className="sticky top-0 z-0 h-svh overflow-hidden md:hidden">
+        <Image
+          src="/images/hero-bg.jpg"
+          alt=""
+          aria-hidden
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[76%_50%]"
+        />
+        <div className="absolute inset-0 bg-[color:var(--ink-1)]/10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[color:var(--ink-1)]/10 via-[color:var(--ink-1)]/5 to-[color:var(--ink-1)]/25" />
+        <div className="dot-grid absolute inset-0 opacity-45" />
+      </div>
       <Image
         src="/images/hero-bg.jpg"
         alt=""
@@ -56,13 +70,13 @@ export function Hero({ lang, tr }: SectionProps) {
         fill
         priority
         sizes="100vw"
-        className="absolute inset-0 object-cover"
+        className="absolute inset-0 hidden object-cover md:block"
       />
-      <div className="absolute inset-0 bg-[color:var(--ink-1)]/10" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[color:var(--ink-1)]/10 via-[color:var(--ink-1)]/5 to-[color:var(--ink-1)]/10" />
-      <div className="dot-grid absolute inset-0 opacity-50" />
+      <div className="absolute inset-0 hidden bg-[color:var(--ink-1)]/10 md:block" />
+      <div className="absolute inset-0 hidden bg-gradient-to-b from-[color:var(--ink-1)]/10 via-[color:var(--ink-1)]/5 to-[color:var(--ink-1)]/10 md:block" />
+      <div className="dot-grid absolute inset-0 hidden opacity-50 md:block" />
 
-      <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-center px-6 pt-32 pb-10 md:items-start md:px-10 md:pt-40 md:pb-10 lg:min-h-screen lg:pb-8">
+      <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-center px-6 pt-8 pb-10 md:items-start md:px-10 md:pt-40 md:pb-10 lg:min-h-screen lg:pb-8">
         <div className="hero-glass animate-float relative w-full max-w-2xl lg:max-w-[42rem] rounded-[3rem] md:rounded-[3.5rem] p-7 md:p-9 lg:p-10">
           <span
             className="hero-corner -top-6 -left-6"
