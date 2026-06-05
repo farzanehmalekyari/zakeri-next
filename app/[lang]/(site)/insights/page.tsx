@@ -42,9 +42,9 @@ export default async function InsightsPage({ params }: LocalePageProps) {
     <>
       <PageHero title={tr.pages.insights.title} lead={tr.pages.insights.lead} />
       <section className="pb-24">
-        <div className="mx-auto max-w-7xl px-6 md:px-10 grid gap-6 md:grid-cols-2">
+        <div className="mx-auto max-w-7xl px-6 md:px-10 grid gap-6 md:grid-cols-2" data-mobile-hover-group>
           {POSTS.map((post, i) => (
-            <article key={i} className="glass rounded-3xl p-7 hover-lift">
+            <article key={i} className="glass rounded-3xl p-7 hover-lift" data-mobile-hover>
               <div className="text-[11px] uppercase tracking-widest text-[color:var(--ink-4)]">
                 Article · 2026
               </div>

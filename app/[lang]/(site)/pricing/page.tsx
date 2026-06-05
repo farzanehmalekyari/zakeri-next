@@ -397,7 +397,10 @@ export default async function PricingPage({ params }: LocalePageProps) {
           </div>
         </div>
 
-        <div className="mx-auto mt-5 grid max-w-[880px] gap-6 md:grid-cols-3 md:items-start xl:max-w-[1100px]">
+        <div
+          className="mx-auto mt-5 grid max-w-[880px] gap-6 md:grid-cols-3 md:items-start xl:max-w-[1100px]"
+          data-mobile-hover-group
+        >
           {copy.plans.map((plan) => (
             <PricingCard key={plan.name} copy={copy} lang={lang} plan={plan} />
           ))}
@@ -434,9 +437,10 @@ function PricingCard({ copy, lang, plan }: { copy: PricingCopy; lang: Lang; plan
 
   return (
     <article
-      className={`group relative flex min-h-[430px] flex-col overflow-hidden rounded-[24px] border p-6 text-start transition duration-300 hover:-translate-y-1 md:min-h-[442px] ${
+      className={`pricing-plan-card group relative flex min-h-[430px] flex-col overflow-hidden rounded-[24px] border p-6 text-start transition duration-300 hover:-translate-y-1 md:min-h-[442px] ${
         plan.featured ? "md:-mt-2 md:min-h-[456px]" : "md:mt-2"
       }`}
+      data-mobile-hover
       style={style}
     >
       <div

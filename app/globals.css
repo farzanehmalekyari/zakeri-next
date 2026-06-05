@@ -277,6 +277,86 @@
   .hover-lift { transition: transform .35s ease, box-shadow .35s ease, filter .35s ease; }
   .hover-lift:hover { transform: translateY(-4px) scale(1.01); box-shadow: var(--shadow-glow), 0 0 50px -30px var(--neon-magenta); }
 
+  @media (max-width: 767px) {
+    .hover-lift[data-mobile-active="true"] {
+      transform: translateY(-3px) scale(1.008);
+      filter: brightness(1.04);
+      box-shadow: var(--shadow-glow-soft), 0 0 42px -28px var(--neon-magenta);
+    }
+
+    .mobile-problem-card[data-mobile-active="true"] {
+      transform: translateY(-3px);
+      box-shadow: 0 26px 74px -28px var(--tw-shadow-color);
+    }
+
+    .mobile-problem-card[data-mobile-active="true"] .mobile-problem-sheen {
+      opacity: 1;
+    }
+
+    .mobile-problem-card[data-mobile-active="true"] .mobile-problem-line {
+      opacity: 1 !important;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--problem-accent), transparent) !important;
+      box-shadow:
+        0 0 24px var(--problem-accent),
+        0 0 44px color-mix(in oklab, var(--problem-accent) 56%, transparent) !important;
+      filter: brightness(1.18) saturate(1.12);
+    }
+
+    .hero-feature-card[data-mobile-active="true"] {
+      animation-play-state: paused;
+      border-color: rgba(125,210,255,0.58);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.22),
+        inset 0 -1px 0 rgba(0,191,255,0.18),
+        0 24px 72px -38px rgba(0,0,0,0.9),
+        0 0 48px -26px rgba(0,191,255,0.92);
+      transform: translate3d(0, -4px, 0);
+    }
+
+    .mobile-case-card[data-mobile-active="true"] {
+      z-index: 20;
+      opacity: 1 !important;
+      filter: brightness(1) !important;
+      transform: translateY(-10px) scale(1.025) !important;
+      box-shadow:
+        0 24px 70px -34px var(--glow),
+        0 0 0 1px color-mix(in oklab, var(--glow) 72%, transparent);
+    }
+
+    .mobile-case-card[data-mobile-active="true"] .mobile-case-image-shade {
+      opacity: .1;
+    }
+
+    .mobile-case-card[data-mobile-active="true"] .mobile-case-quote {
+      opacity: 1 !important;
+      transform: translate(-50%, 0) !important;
+    }
+
+    .mobile-services-card[data-mobile-active="true"] .mobile-services-glow {
+      opacity: 1;
+    }
+
+    .service-row-card[data-mobile-active="true"] {
+      border-color: rgba(141,203,255,0.56);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.18),
+        0 30px 84px -50px rgba(0,0,0,0.96),
+        0 0 50px -26px rgba(98,184,255,0.92),
+        0 0 54px -40px rgba(244,126,232,0.86);
+      transform: translateY(-3px);
+    }
+
+    .service-row-card[data-mobile-active="true"] .service-row-visual img {
+      filter: saturate(1.1) brightness(1.06);
+      transform: scale(1.035);
+    }
+
+    .pricing-plan-card[data-mobile-active="true"] {
+      transform: translateY(-3px);
+    }
+  }
+
   .btn-primary {
     display: inline-flex; align-items: center; gap: .5rem;
     padding: .85rem 1.4rem; border-radius: 999px;

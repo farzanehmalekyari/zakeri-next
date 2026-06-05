@@ -32,9 +32,9 @@ export default async function PortfolioPage({ params }: LocalePageProps) {
     <>
       <PageHero title={tr.pages.portfolio.title} lead={tr.pages.portfolio.lead} />
       <section className="pb-24">
-        <div className="mx-auto max-w-7xl px-6 md:px-10 grid gap-6 md:grid-cols-2">
+        <div className="mx-auto max-w-7xl px-6 md:px-10 grid gap-6 md:grid-cols-2" data-mobile-hover-group>
           {tr.cases.items.map((item, i) => (
-            <article key={i} className="glass rounded-3xl p-4 hover-lift">
+            <article key={i} className="glass rounded-3xl p-4 hover-lift" data-mobile-hover>
               <div className="relative h-64 rounded-2xl overflow-hidden border border-white/10">
                 <Image
                   src={IMAGES[i]}

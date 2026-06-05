@@ -146,11 +146,15 @@ export function Hero({ lang, tr }: SectionProps) {
           </div>
         </div>
 
-        <div className="hero-feature-grid mt-6 grid w-full max-w-[73rem] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div
+          className="hero-feature-grid mt-6 grid w-full max-w-[73rem] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          data-mobile-hover-group
+        >
           {featureCards.map((item, i) => (
             <article
               key={item.label}
               className="hero-feature-card group"
+              data-mobile-hover
               style={{ "--feature-delay": `${i * 0.28}s` } as CSSProperties}
             >
               <span className="hero-feature-icon" aria-hidden>
@@ -217,24 +221,25 @@ export function ProblemSection({ tr }: SectionProps) {
           <h2 className="text-3xl md:text-5xl font-semibold text-gradient">{tr.problem.title}</h2>
           <p className="mt-4 text-[color:var(--ink-4)] text-lg">{tr.problem.sub}</p>
         </div>
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4" data-mobile-hover-group>
           {tr.problem.cards.map((card, i) => {
             const accent = PROBLEM_ACCENTS[i];
             return (
               <div
                 key={i}
-                className="group relative glass overflow-hidden rounded-3xl p-6 transition duration-500 hover:shadow-[0_30px_80px_-20px_var(--tw-shadow-color)] hover:-translate-y-1"
+                className="mobile-problem-card group relative glass overflow-hidden rounded-3xl p-6 transition duration-500 hover:shadow-[0_30px_80px_-20px_var(--tw-shadow-color)] hover:-translate-y-1"
+                data-mobile-hover
                 style={{ "--problem-accent": accent, "--tw-shadow-color": accent } as CSSProperties}
               >
                 <div
-                  className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition duration-500 group-hover:opacity-100"
+                  className="mobile-problem-sheen pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition duration-500 group-hover:opacity-100"
                   style={{
                     background:
                       "radial-gradient(120% 90% at 50% 0%, color-mix(in oklab, var(--problem-accent) 18%, transparent), transparent 58%)",
                   }}
                 />
                 <div
-                  className="absolute inset-x-6 top-0 z-10 h-[2px] rounded-full opacity-0 transition group-hover:opacity-100"
+                  className="mobile-problem-line absolute inset-x-6 top-0 z-10 h-[2px] rounded-full opacity-0 transition group-hover:opacity-100"
                   style={{
                     background: "linear-gradient(90deg, transparent, var(--problem-accent), transparent)",
                     boxShadow: "0 0 24px var(--problem-accent)",
@@ -294,7 +299,11 @@ export function SolutionSection({ lang, tr }: SectionProps) {
           >
             <MoveHorizontal className="h-5 w-5" />
           </div>
-          <div className="overflow-x-auto scroll-px-6 snap-x snap-mandatory px-6 pb-3 scrollbar-none md:overflow-visible md:px-0 md:pb-0">
+          <div
+            className="overflow-x-auto scroll-px-6 snap-x snap-mandatory px-6 pb-3 scrollbar-none md:overflow-visible md:px-0 md:pb-0"
+            data-mobile-hover-group
+            data-mobile-hover-axis="x"
+          >
             <div className="flex gap-5 md:grid md:grid-cols-2 lg:grid-cols-3">
               {tr.solution.cards.map((card, i) => {
                 const Icon = SOLUTION_ICONS[i];
@@ -302,6 +311,7 @@ export function SolutionSection({ lang, tr }: SectionProps) {
                   <article
                     key={i}
                     className="group glass luminous-border flex w-[82vw] max-w-[22rem] shrink-0 snap-start flex-col overflow-hidden rounded-3xl p-6 animate-fade-up hover-lift md:w-auto md:max-w-none md:shrink"
+                    data-mobile-hover
                     style={{ animationDelay: `${i * 60}ms` }}
                   >
                     <div className="neon-icon-box inline-flex h-11 w-11 items-center justify-center rounded-2xl">
@@ -392,12 +402,14 @@ export function CasesSection({ lang, tr }: SectionProps) {
           <div
             ref={casesCarouselRef}
             className="px-14 md:px-20 overflow-x-auto snap-x snap-mandatory scroll-px-14 md:scroll-px-20 scrollbar-none"
+            data-mobile-hover-group
+            data-mobile-hover-axis="x"
           >
             <div className="flex items-start gap-10 pt-20 pb-40 md:gap-12 md:pt-20 md:pb-40 group/list">
               {tr.cases.items.map((item, i) => {
                 const Icon = CASE_ICONS[i];
                 const cardClassName = [
-                  "group group/card relative isolate flex snap-start shrink-0 flex-col glass rounded-[2rem] p-5 transition-all duration-500 will-change-transform",
+                  "mobile-case-card group group/card relative isolate flex snap-start shrink-0 flex-col glass rounded-[2rem] p-5 transition-all duration-500 will-change-transform",
                   "w-[86%] sm:w-[62%] lg:w-[22rem]",
                   "lg:group-hover/list:opacity-35 lg:group-hover/list:brightness-50",
                   "hover:z-20 hover:-translate-y-4 hover:!scale-[1.045] hover:!opacity-100 hover:!brightness-100 hover:shadow-[0_24px_70px_-34px_var(--glow)] hover:ring-1 hover:ring-[color:var(--glow)]",
@@ -410,6 +422,7 @@ export function CasesSection({ lang, tr }: SectionProps) {
                   <article
                     key={i}
                     className={cardClassName}
+                    data-mobile-hover
                   >
                     <div className={imageClassName}>
                       <Image
@@ -421,7 +434,7 @@ export function CasesSection({ lang, tr }: SectionProps) {
                       />
                       <div
                         className={[
-                          "absolute inset-0 bg-gradient-to-t from-[color:var(--ink-1)]/50 via-transparent to-transparent transition duration-500 group-hover/card:opacity-10",
+                          "mobile-case-image-shade absolute inset-0 bg-gradient-to-t from-[color:var(--ink-1)]/50 via-transparent to-transparent transition duration-500 group-hover/card:opacity-10",
                           "opacity-50",
                         ].join(" ")}
                       />
@@ -441,7 +454,7 @@ export function CasesSection({ lang, tr }: SectionProps) {
                     <div className="pointer-events-none absolute inset-0 z-10 rounded-[inherit] bg-[color:var(--ink-1)]/60 opacity-0 transition duration-500 lg:group-hover/list:opacity-100 group-hover/card:!opacity-0" />
 
                     <div
-                      className="pointer-events-none absolute left-1/2 -translate-x-1/2 -bottom-6 z-20 w-[88%] rounded-2xl border border-white/30 p-4 opacity-0 shadow-[0_24px_90px_-28px_rgba(75,169,255,0.58)] backdrop-blur-2xl backdrop-saturate-150 ring-1 ring-white/10 translate-y-3 transition duration-500 group-hover:opacity-100 group-hover:translate-y-0"
+                      className="mobile-case-quote pointer-events-none absolute left-1/2 -translate-x-1/2 -bottom-6 z-20 w-[88%] rounded-2xl border border-white/30 p-4 opacity-0 shadow-[0_24px_90px_-28px_rgba(75,169,255,0.58)] backdrop-blur-2xl backdrop-saturate-150 ring-1 ring-white/10 translate-y-3 transition duration-500 group-hover:opacity-100 group-hover:translate-y-0"
                       style={{
                         background:
                           "linear-gradient(105deg, rgba(75,169,255,0.20) 0%, rgba(123,140,255,0.16) 54%, rgba(244,126,232,0.12) 100%), rgba(18,34,66,0.72)",
@@ -498,16 +511,17 @@ export function ServicesSection({ lang, tr }: SectionProps) {
           <h2 className="text-3xl md:text-5xl font-semibold text-gradient">{tr.services.title}</h2>
           <p className="mt-4 text-[color:var(--ink-4)] text-lg">{tr.services.sub}</p>
         </div>
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 group/svc">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 group/svc" data-mobile-hover-group>
           {tr.services.items.map((item, i) => {
             const Icon = SERVICE_ICONS[i];
             return (
               <article
                 key={i}
-                className="relative glass rounded-[2rem] p-6 transition duration-500 hover-lift overflow-hidden group-hover/svc:[&:not(:hover)]:opacity-70"
+                className="mobile-services-card group/card relative glass rounded-[2rem] p-6 transition duration-500 hover-lift overflow-hidden group-hover/svc:[&:not(:hover)]:opacity-70"
+                data-mobile-hover
               >
                 <div
-                  className="absolute inset-0 rounded-[2rem] opacity-0 hover:opacity-100 transition duration-500 pointer-events-none"
+                  className="mobile-services-glow absolute inset-0 rounded-[2rem] opacity-0 transition duration-500 pointer-events-none group-hover/card:opacity-100"
                   style={{
                     boxShadow:
                       "inset 0 0 0 1px color-mix(in oklab, var(--destructive) 60%, transparent), 0 0 60px -10px var(--destructive)",
@@ -565,12 +579,13 @@ export function IndustriesSection({ lang, tr }: SectionProps) {
           </h2>
           <p className="mt-4 text-[color:var(--ink-4)] text-lg">{tr.industries.sub}</p>
         </div>
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" data-mobile-hover-group>
           {tr.industries.items.map((item, i) => {
             return (
               <article
                 key={i}
                 className="glass rounded-[2rem] p-6 hover-lift transition duration-300"
+                data-mobile-hover
                 style={{ background: "rgba(10,20,40,0.7)" }}
               >
                 <div className="h-28 rounded-2xl border border-white/10 relative overflow-hidden">

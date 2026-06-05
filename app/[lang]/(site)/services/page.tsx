@@ -35,7 +35,7 @@ export default async function ServicesPage({ params }: LocalePageProps) {
       <PageHero title={tr.pages.services.title} lead={tr.pages.services.lead} />
       <section className="pb-24 md:pb-32">
         <div className="mx-auto max-w-7xl px-6 md:px-10">
-          <div className="space-y-5">
+          <div className="space-y-5" data-mobile-hover-group>
             {tr.services.items.map((service, i) => {
               const Icon = ICONS[i];
               const image = SERVICE_IMAGES[i];
@@ -43,6 +43,7 @@ export default async function ServicesPage({ params }: LocalePageProps) {
                 <article
                   key={i}
                   className="service-row-card group grid gap-5 rounded-[2rem] p-4 md:p-5 lg:min-h-[18rem] lg:grid-cols-[18.5rem_minmax(13rem,0.82fr)_minmax(20rem,1fr)_5rem] lg:items-stretch lg:gap-7 lg:p-7"
+                  data-mobile-hover
                 >
                   <div className="service-row-visual relative min-h-[13.5rem] overflow-hidden rounded-[1.5rem] border border-white/10 bg-[color:var(--ink-1)] lg:min-h-[14rem]">
                     <Image
