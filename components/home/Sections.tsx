@@ -59,6 +59,7 @@ export function Hero({ lang, tr }: SectionProps) {
         sizes="100vw"
         className="absolute inset-0 object-cover"
       />
+      <div className="absolute inset-0 bg-[color:var(--ink-1)]/10" />
       <div className="absolute inset-0 bg-gradient-to-b from-[color:var(--ink-1)]/10 via-[color:var(--ink-1)]/5 to-[color:var(--ink-1)]/10" />
       <div className="dot-grid absolute inset-0 opacity-50" />
 
@@ -512,7 +513,12 @@ export function ServicesSection({ lang, tr }: SectionProps) {
   );
 }
 
-const INDUSTRY_ICONS = [Building2, HeartPulse, User, Handshake];
+const INDUSTRY_IMAGES = [
+  "/images/industry-realstate.jpg",
+  "/images/Industry-doctor.jpg",
+  "/images/Industry-personal.jpg",
+  "/images/Industry-bussiness.jpg",
+];
 
 export function IndustriesSection({ lang, tr }: SectionProps) {
   return (
@@ -531,7 +537,6 @@ export function IndustriesSection({ lang, tr }: SectionProps) {
         </div>
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {tr.industries.items.map((item, i) => {
-            const Icon = INDUSTRY_ICONS[i];
             return (
               <article
                 key={i}
@@ -539,10 +544,14 @@ export function IndustriesSection({ lang, tr }: SectionProps) {
                 style={{ background: "rgba(10,20,40,0.7)" }}
               >
                 <div className="h-28 rounded-2xl border border-white/10 relative overflow-hidden">
-                  <div className="absolute -inset-10 opacity-60 bg-[radial-gradient(circle_at_50%_50%,var(--glow),transparent_60%)]" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Icon className="h-10 w-10 text-[color:var(--ink-5)] drop-shadow-[0_0_16px_rgba(98,184,255,0.7)]" />
-                  </div>
+                  <Image
+                    src={INDUSTRY_IMAGES[i]}
+                    alt=""
+                    fill
+                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover opacity-90"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--ink-1)]/75 via-[color:var(--ink-1)]/10 to-transparent" />
                 </div>
                 <h3 className="mt-5 text-lg font-semibold text-[color:var(--ink-5)]">{item.t}</h3>
                 <p className="mt-2 text-sm text-[color:var(--ink-4)]">{item.d}</p>
