@@ -427,9 +427,15 @@ export function CasesSection({ lang, tr }: SectionProps) {
 
                     <div className="pointer-events-none absolute inset-0 z-10 rounded-[inherit] bg-[color:var(--ink-1)]/60 opacity-0 transition duration-500 lg:group-hover/list:opacity-100 group-hover/card:!opacity-0" />
 
-                    <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 -bottom-6 z-20 w-[88%] rounded-2xl border border-white/15 bg-[color:var(--ink-2)] p-4 opacity-0 shadow-[0_24px_80px_-24px_rgba(0,0,0,0.9)] translate-y-3 transition duration-500 group-hover:opacity-100 group-hover:translate-y-0">
-                      <Quote className="h-4 w-4 text-[color:var(--glow)]" />
-                      <p className="mt-2 text-xs text-[color:var(--ink-4)] leading-relaxed">
+                    <div
+                      className="pointer-events-none absolute left-1/2 -translate-x-1/2 -bottom-6 z-20 w-[88%] rounded-2xl border border-white/30 p-4 opacity-0 shadow-[0_24px_90px_-28px_rgba(75,169,255,0.58)] backdrop-blur-2xl backdrop-saturate-150 ring-1 ring-white/10 translate-y-3 transition duration-500 group-hover:opacity-100 group-hover:translate-y-0"
+                      style={{
+                        background:
+                          "linear-gradient(105deg, rgba(75,169,255,0.20) 0%, rgba(123,140,255,0.16) 54%, rgba(244,126,232,0.12) 100%), rgba(18,34,66,0.72)",
+                      }}
+                    >
+                      <Quote className="h-4 w-4 text-[color:var(--glow-strong)]" />
+                      <p className="mt-2 text-xs font-medium text-[color:var(--ink-5)]/95 leading-relaxed drop-shadow-[0_1px_7px_rgba(0,0,0,0.55)]">
                         &quot;{tr.cases.quote}&quot;
                       </p>
                       <div className="mt-3 flex items-center gap-2">
@@ -440,9 +446,9 @@ export function CasesSection({ lang, tr }: SectionProps) {
                           width={28}
                           height={28}
                         />
-                        <div className="text-[11px] text-[color:var(--ink-5)]">
+                        <div className="text-[11px] font-medium text-[color:var(--ink-5)] drop-shadow-[0_1px_6px_rgba(0,0,0,0.45)]">
                           {tr.cases.who.name}{" "}
-                          <span className="text-[color:var(--ink-4)]/70">— {tr.cases.who.role}</span>
+                          <span className="text-[color:var(--ink-5)]/72">— {tr.cases.who.role}</span>
                         </div>
                       </div>
                     </div>
