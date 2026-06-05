@@ -73,14 +73,12 @@ export function Header({ lang, tr }: { lang: Lang; tr: Dict }) {
 
           <div className="hidden lg:flex items-center gap-3">
             <LanguageSwitcher lang={lang} />
-            <a
-              href={publicSiteConfig.whatsappUrl}
-              target="_blank"
-              rel="noreferrer"
+            <Link
+              href={withLocalePath(lang, "/contact")}
               className="btn-primary px-4 py-2 text-sm"
             >
-              WhatsApp
-            </a>
+              {tr.cta.audit}
+            </Link>
           </div>
 
           <button
@@ -145,15 +143,13 @@ export function Header({ lang, tr }: { lang: Lang; tr: Dict }) {
           </nav>
           <div className="mt-auto flex flex-col gap-3">
             <LanguageSwitcher lang={lang} />
-            <a
-              href={publicSiteConfig.whatsappUrl}
+            <Link
+              href={withLocalePath(lang, "/contact")}
               onClick={() => setOpen(false)}
-              target="_blank"
-              rel="noreferrer"
               className="btn-primary justify-center px-4 py-3 text-base"
             >
-              WhatsApp
-            </a>
+              {tr.cta.audit}
+            </Link>
           </div>
         </div>
       </div>

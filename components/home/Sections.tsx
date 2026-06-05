@@ -17,7 +17,6 @@ import {
   Globe,
   Handshake,
   HeartPulse,
-  MessageCircle,
   MonitorSmartphone,
   MoveHorizontal,
   PencilRuler,
@@ -30,7 +29,6 @@ import {
 } from "lucide-react";
 import type { Dict, Lang } from "@/i18n/translations";
 import { withLocalePath } from "@/i18n/routing";
-import { publicSiteConfig } from "@/lib/site";
 
 type SectionProps = {
   lang: Lang;
@@ -418,11 +416,12 @@ export function CasesSection({ lang, tr }: SectionProps) {
                       <Icon className="h-3.5 w-3.5" /> {item.industry}
                     </div>
                     <h3 className="mt-2 text-[color:var(--ink-5)] font-semibold">{item.goal}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[color:var(--ink-4)]">{item.summary}</p>
                     <Link
                       href={withLocalePath(lang, "/portfolio")}
                       className="mt-5 inline-flex items-center gap-1 text-sm text-[color:var(--glow)] hover:text-[color:var(--glow-strong)]"
                     >
-                      {tr.cta.learn} <ArrowUpRight className="h-3.5 w-3.5" />
+                      {tr.cases.cta} <ArrowUpRight className="h-3.5 w-3.5" />
                     </Link>
 
                     <div className="pointer-events-none absolute inset-0 z-10 rounded-[inherit] bg-[color:var(--ink-1)]/60 opacity-0 transition duration-500 lg:group-hover/list:opacity-100 group-hover/card:!opacity-0" />
@@ -436,7 +435,7 @@ export function CasesSection({ lang, tr }: SectionProps) {
                     >
                       <Quote className="h-4 w-4 text-[color:var(--glow-strong)]" />
                       <p className="mt-2 text-xs font-medium text-[color:var(--ink-5)]/95 leading-relaxed drop-shadow-[0_1px_7px_rgba(0,0,0,0.55)]">
-                        &quot;{tr.cases.quote}&quot;
+                        &quot;{item.quote}&quot;
                       </p>
                       <div className="mt-3 flex items-center gap-2">
                         <Image
@@ -447,8 +446,8 @@ export function CasesSection({ lang, tr }: SectionProps) {
                           height={28}
                         />
                         <div className="text-[11px] font-medium text-[color:var(--ink-5)] drop-shadow-[0_1px_6px_rgba(0,0,0,0.45)]">
-                          {tr.cases.who.name}{" "}
-                          <span className="text-[color:var(--ink-5)]/72">— {tr.cases.who.role}</span>
+                          {item.who.name}{" "}
+                          <span className="text-[color:var(--ink-5)]/72">— {item.who.role}</span>
                         </div>
                       </div>
                     </div>
@@ -470,12 +469,12 @@ export function CasesSection({ lang, tr }: SectionProps) {
 }
 
 const SERVICE_IMAGES = [
-  "/images/svc-geo.jpg",
-  "/images/svc-ai.jpg",
   "/images/svc-web.jpg",
+  "/images/svc-geo.jpg",
   "/images/svc-visibility.jpg",
+  "/images/svc-ai.jpg",
 ];
-const SERVICE_ICONS = [SearchCheck, Bot, MonitorSmartphone, CircleGauge];
+const SERVICE_ICONS = [MonitorSmartphone, SearchCheck, CircleGauge, Bot];
 
 export function ServicesSection({ lang, tr }: SectionProps) {
   return (
@@ -601,14 +600,9 @@ export function FinalCta({ lang, tr }: SectionProps) {
               <Link href={withLocalePath(lang, "/contact")} className="btn-primary">
                 {tr.cta.audit} <ArrowRight className="h-4 w-4 flip-rtl" />
               </Link>
-              <a
-                href={publicSiteConfig.whatsappUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="btn-ghost"
-              >
-                <MessageCircle className="h-4 w-4" /> {tr.cta.whatsapp}
-              </a>
+              <Link href={withLocalePath(lang, "/portfolio")} className="btn-ghost">
+                {tr.cta.viewPortfolio} <ArrowUpRight className="h-4 w-4" />
+              </Link>
             </div>
           </div>
           <div className="relative h-72 md:h-96 rounded-3xl overflow-hidden border border-white/10">

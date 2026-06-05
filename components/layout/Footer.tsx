@@ -1,9 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Instagram, Linkedin, MessageCircle, Twitter } from "lucide-react";
+import { ArrowRight, Instagram, Linkedin, Twitter } from "lucide-react";
 import type { Dict, Lang } from "@/i18n/translations";
 import { withLocalePath, type SitePath } from "@/i18n/routing";
-import { publicSiteConfig } from "@/lib/site";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function Footer({ lang, tr }: { lang: Lang; tr: Dict }) {
@@ -61,14 +60,12 @@ export function Footer({ lang, tr }: { lang: Lang; tr: Dict }) {
               <div className="text-xs uppercase tracking-widest text-[color:var(--ink-4)]/70">
                 {tr.footer.sections.contact}
               </div>
-              <a
-                href={publicSiteConfig.whatsappUrl}
-                target="_blank"
-                rel="noreferrer"
+              <Link
+                href={withLocalePath(lang, "/contact")}
                 className="btn-primary mt-3"
               >
-                <MessageCircle className="h-4 w-4" /> {tr.cta.whatsapp}
-              </a>
+                {tr.cta.audit} <ArrowRight className="h-4 w-4 flip-rtl" />
+              </Link>
             </div>
             <div>
               <div className="text-xs uppercase tracking-widest text-[color:var(--ink-4)]/70">
